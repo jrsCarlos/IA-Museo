@@ -1,0 +1,228 @@
+@prefix : <urn:webprotege:ontology:0aec0a6e-3055-4d18-9686-df74534c67e1#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <urn:webprotege:ontology:0aec0a6e-3055-4d18-9686-df74534c67e1> .
+
+<urn:webprotege:ontology:0aec0a6e-3055-4d18-9686-df74534c67e1> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://webprotege.stanford.edu/Ha_pintado
+<http://webprotege.stanford.edu/Ha_pintado> rdf:type owl:ObjectProperty ;
+                                            rdfs:subPropertyOf owl:topObjectProperty ;
+                                            rdfs:domain <http://webprotege.stanford.edu/Rz2vZwaBtLRvgVjqNRbL7T> ;
+                                            rdfs:range <http://webprotege.stanford.edu/ObrasDeArte> ;
+                                            rdfs:label "Ha_pintado"@es .
+
+
+###  http://webprotege.stanford.edu/pintada_por
+<http://webprotege.stanford.edu/pintada_por> rdf:type owl:ObjectProperty ;
+                                             rdfs:subPropertyOf owl:topObjectProperty ;
+                                             rdfs:domain <http://webprotege.stanford.edu/ObrasDeArte> ;
+                                             rdfs:range <http://webprotege.stanford.edu/Rz2vZwaBtLRvgVjqNRbL7T> ;
+                                             rdfs:label "Pintada_por"@es .
+
+
+###  http://webprotege.stanford.edu/ubicada_en
+<http://webprotege.stanford.edu/ubicada_en> rdf:type owl:ObjectProperty ;
+                                            rdfs:subPropertyOf owl:topObjectProperty ;
+                                            rdfs:domain <http://webprotege.stanford.edu/ObrasDeArte> ;
+                                            rdfs:range <http://webprotege.stanford.edu/Sala> ;
+                                            rdfs:label "Ubicada_en"^^xsd:string .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://webprotege.stanford.edu/ConocimientoArte
+<http://webprotege.stanford.edu/ConocimientoArte> rdf:type owl:DatatypeProperty ;
+                                                  rdfs:subPropertyOf owl:topDataProperty ;
+                                                  rdfs:domain <http://webprotege.stanford.edu/Visitantes> ;
+                                                  rdfs:range xsd:integer ;
+                                                  rdfs:comment "1 - Poco conocimiento ; 10 - Conocimiento completo"^^xsd:string ;
+                                                  rdfs:label "Conocimiento"@es .
+
+
+###  http://webprotege.stanford.edu/DiasDeVisita
+<http://webprotege.stanford.edu/DiasDeVisita> rdf:type owl:DatatypeProperty ;
+                                              rdfs:subPropertyOf owl:topDataProperty ;
+                                              rdfs:domain <http://webprotege.stanford.edu/Visitantes> ;
+                                              rdfs:range xsd:integer ;
+                                              rdfs:label "DiasDeVisita"@es .
+
+
+###  http://webprotege.stanford.edu/DuracionVisita
+<http://webprotege.stanford.edu/DuracionVisita> rdf:type owl:DatatypeProperty ;
+                                                rdfs:subPropertyOf owl:topDataProperty ;
+                                                rdfs:domain <http://webprotege.stanford.edu/Visitantes> ;
+                                                rdfs:range xsd:integer ;
+                                                rdfs:label "DuracionVisita"@es .
+
+
+###  http://webprotege.stanford.edu/Epoca
+<http://webprotege.stanford.edu/Epoca> rdf:type owl:DatatypeProperty ;
+                                       rdfs:domain <http://webprotege.stanford.edu/ObrasDeArte> ,
+                                                   <http://webprotege.stanford.edu/Rz2vZwaBtLRvgVjqNRbL7T> ;
+                                       rdfs:range xsd:string ;
+                                       rdfs:label "Epoca"^^xsd:string .
+
+
+###  http://webprotege.stanford.edu/Sala
+<http://webprotege.stanford.edu/Sala> rdf:type owl:DatatypeProperty ;
+                                      rdfs:subPropertyOf owl:topDataProperty ;
+                                      rdfs:domain <http://webprotege.stanford.edu/ObrasDeArte> ;
+                                      rdfs:range xsd:integer .
+
+
+###  http://webprotege.stanford.edu/TipoDeVisitantes
+<http://webprotege.stanford.edu/TipoDeVisitantes> rdf:type owl:DatatypeProperty ;
+                                                  rdfs:subPropertyOf owl:topDataProperty ;
+                                                  rdfs:domain <http://webprotege.stanford.edu/Visitantes> ;
+                                                  rdfs:range xsd:string ;
+                                                  rdfs:label "TipoDeVisitantes"@es .
+
+
+###  http://webprotege.stanford.edu/anyCreacion
+<http://webprotege.stanford.edu/anyCreacion> rdf:type owl:DatatypeProperty ;
+                                             rdfs:domain <http://webprotege.stanford.edu/ObrasDeArte> ;
+                                             rdfs:range xsd:integer ;
+                                             rdfs:label "AnyCreacion"@es .
+
+
+###  http://webprotege.stanford.edu/complejidad
+<http://webprotege.stanford.edu/complejidad> rdf:type owl:DatatypeProperty ;
+                                             rdfs:subPropertyOf owl:topDataProperty ;
+                                             rdfs:domain <http://webprotege.stanford.edu/ObrasDeArte> ;
+                                             rdfs:range xsd:integer ;
+                                             rdfs:label "Complejidad"@es .
+
+
+###  http://webprotege.stanford.edu/dimensiones
+<http://webprotege.stanford.edu/dimensiones> rdf:type owl:DatatypeProperty ;
+                                             rdfs:subPropertyOf owl:topDataProperty ;
+                                             rdfs:domain <http://webprotege.stanford.edu/ObrasDeArte> ;
+                                             rdfs:range xsd:string ;
+                                             rdfs:label "Dimensiones"@es .
+
+
+###  http://webprotege.stanford.edu/estilo
+<http://webprotege.stanford.edu/estilo> rdf:type owl:DatatypeProperty ;
+                                        rdfs:subPropertyOf owl:topDataProperty ;
+                                        rdfs:domain <http://webprotege.stanford.edu/ObrasDeArte> ;
+                                        rdfs:range xsd:string ;
+                                        rdfs:label "Estilo"@es .
+
+
+###  http://webprotege.stanford.edu/id
+<http://webprotege.stanford.edu/id> rdf:type owl:DatatypeProperty ;
+                                    rdfs:subPropertyOf owl:topDataProperty ;
+                                    rdfs:domain <http://webprotege.stanford.edu/Museo> ,
+                                                <http://webprotege.stanford.edu/ObrasDeArte> ,
+                                                <http://webprotege.stanford.edu/Rz2vZwaBtLRvgVjqNRbL7T> ,
+                                                <http://webprotege.stanford.edu/Sala> ,
+                                                <http://webprotege.stanford.edu/Visitantes> ;
+                                    rdfs:range xsd:integer ;
+                                    rdfs:label "id"@es .
+
+
+###  http://webprotege.stanford.edu/nacionalidad
+<http://webprotege.stanford.edu/nacionalidad> rdf:type owl:DatatypeProperty ;
+                                              rdfs:subPropertyOf owl:topDataProperty ;
+                                              rdfs:domain <http://webprotege.stanford.edu/Rz2vZwaBtLRvgVjqNRbL7T> ;
+                                              rdfs:range xsd:string ;
+                                              rdfs:label "Nacionalidad"@es .
+
+
+###  http://webprotege.stanford.edu/nombre
+<http://webprotege.stanford.edu/nombre> rdf:type owl:DatatypeProperty ;
+                                        rdfs:subPropertyOf owl:topDataProperty ;
+                                        rdfs:domain <http://webprotege.stanford.edu/Museo> ,
+                                                    <http://webprotege.stanford.edu/ObrasDeArte> ,
+                                                    <http://webprotege.stanford.edu/Rz2vZwaBtLRvgVjqNRbL7T> ,
+                                                    <http://webprotege.stanford.edu/Sala> ,
+                                                    <http://webprotege.stanford.edu/Visitantes> ;
+                                        rdfs:range xsd:string ;
+                                        rdfs:label "Nombre"@es .
+
+
+###  http://webprotege.stanford.edu/periodosPictoricos
+<http://webprotege.stanford.edu/periodosPictoricos> rdf:type owl:DatatypeProperty ;
+                                                    rdfs:subPropertyOf owl:topDataProperty ;
+                                                    rdfs:domain <http://webprotege.stanford.edu/Rz2vZwaBtLRvgVjqNRbL7T> ;
+                                                    rdfs:range xsd:string ;
+                                                    rdfs:comment "Un pintor puede tener varios periodosPictoricos y los ponemos todos en forma string"^^xsd:string ;
+                                                    rdfs:label "periodosPictoricos"@es .
+
+
+###  http://webprotege.stanford.edu/preferencias
+<http://webprotege.stanford.edu/preferencias> rdf:type owl:DatatypeProperty ;
+                                              rdfs:subPropertyOf owl:topDataProperty ;
+                                              rdfs:domain <http://webprotege.stanford.edu/Visitantes> ;
+                                              rdfs:range xsd:string ;
+                                              rdfs:label "Preferencias"@es .
+
+
+###  http://webprotege.stanford.edu/relevancia
+<http://webprotege.stanford.edu/relevancia> rdf:type owl:DatatypeProperty ;
+                                            rdfs:subPropertyOf owl:topDataProperty ;
+                                            rdfs:domain <http://webprotege.stanford.edu/ObrasDeArte> ;
+                                            rdfs:range xsd:integer ;
+                                            rdfs:label "Relevancia"@es .
+
+
+###  http://webprotege.stanford.edu/tematica
+<http://webprotege.stanford.edu/tematica> rdf:type owl:DatatypeProperty ;
+                                          rdfs:subPropertyOf owl:topDataProperty ;
+                                          rdfs:domain <http://webprotege.stanford.edu/ObrasDeArte> ;
+                                          rdfs:range xsd:string ;
+                                          rdfs:label "Tematica"@es .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://webprotege.stanford.edu/Museo
+<http://webprotege.stanford.edu/Museo> rdf:type owl:Class ;
+                                       rdfs:label "Museo"@es .
+
+
+###  http://webprotege.stanford.edu/ObrasDeArte
+<http://webprotege.stanford.edu/ObrasDeArte> rdf:type owl:Class ;
+                                             rdfs:label "ObrasDeArte"@es .
+
+
+###  http://webprotege.stanford.edu/Rz2vZwaBtLRvgVjqNRbL7T
+<http://webprotege.stanford.edu/Rz2vZwaBtLRvgVjqNRbL7T> rdf:type owl:Class ;
+                                                        rdfs:label "Pintor"@es .
+
+
+###  http://webprotege.stanford.edu/Sala
+<http://webprotege.stanford.edu/Sala> rdf:type owl:Class .
+
+
+###  http://webprotege.stanford.edu/Visitantes
+<http://webprotege.stanford.edu/Visitantes> rdf:type owl:Class ;
+                                            rdfs:label "Visitantes"@es .
+
+
+###  http://webprotege.stanford.edu/Ni%C3%B1o
+<http://webprotege.stanford.edu/Ni%C3%B1o> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://webprotege.stanford.edu/Visitantes> ;
+                                           rdfs:label "Niño"@es .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+<http://webprotege.stanford.edu/Sala> rdfs:label "Sala"@es .
+
+
+###  Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi
