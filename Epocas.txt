@@ -1,0 +1,13 @@
+Romanico - 2
+Renacimiento - 29
+Barroco - 23
+Rococo - 8
+Neoclasicismo - 8
+Romanticismo - 19
+Realismo - 1
+Impresionismo - 4
+Posimpresionismo - 10
+Simbolismo - 1
+Modernismo - 2
+Academismo - 1
+Victoriana - 5
