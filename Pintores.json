@@ -1,0 +1,387 @@
+[
+    {
+        "Nombre": "Aelbrecht Bouts",
+        "Nacionalidad": "Flamenco",
+        "Estilo": "Primitivos Flamencos",
+        "Epoca": "1475-1549",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Alexandre Cabanel",
+        "Nacionalidad": "Frances",
+        "Estilo": "Academicismo",
+        "Epoca": "1840-1889",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Artemisia Gentileschi",
+        "Nacionalidad": "Italiana",
+        "Estilo": "Barroco",
+        "Epoca": "1610-1656",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Auguste Toulmouche",
+        "Nacionalidad": "Frances",
+        "Estilo": "Realismo",
+        "Epoca": "1848-1890",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Bartolome Esteban Murillo",
+        "Nacionalidad": "Español",
+        "Estilo": "Barroco",
+        "Epoca": "1645-1682",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Caravaggio",
+        "Nacionalidad": "Italiano",
+        "Estilo": "Barroco",
+        "Epoca": "1592-1610",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Claude Lorrain",
+        "Nacionalidad": "Frances",
+        "Estilo": "Barroco",
+        "Epoca": "1627-1682",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Claude Monet",
+        "Nacionalidad": "Frances",
+        "Estilo": "Impresionismo",
+        "Epoca": "1858-1926",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Diego Velazquez",
+        "Nacionalidad": "Español",
+        "Estilo": "Barroco",
+        "Epoca": "1617-1660",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Edmund Blair Leighton",
+        "Nacionalidad": "Britanico",
+        "Estilo": "Romanticismo",
+        "Epoca": "1878-1920",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "El Greco",
+        "Nacionalidad": "Griego",
+        "Estilo": "Manierismo",
+        "Epoca": "1563-1614",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Elisabeth Vigee-LeBrun",
+        "Nacionalidad": "Francesa",
+        "Estilo": "Rococo",
+        "Epoca": "1774-1827",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Francesco Hayez",
+        "Nacionalidad": "Italiano",
+        "Estilo": "Romanticismo",
+        "Epoca": "1813-1882",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Francisco de Goya",
+        "Nacionalidad": "Español",
+        "Estilo": "Romanticismo",
+        "Epoca": "1771-1828",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Frank Cadogan Cowper",
+        "Nacionalidad": "Britanico",
+        "Estilo": "Prerrafaelismo",
+        "Epoca": "1899-1958",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Frank Dicksee",
+        "Nacionalidad": "Britanico",
+        "Estilo": "Prerrafaelismo",
+        "Epoca": "1877-1928",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Frederic Leighton",
+        "Nacionalidad": "Britanico",
+        "Estilo": "Academicismo",
+        "Epoca": "1855-1896",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Georges Seurat",
+        "Nacionalidad": "Frances",
+        "Estilo": "Puntillismo",
+        "Epoca": "1880-1891",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Giovanni Antonio Canal (Canaletto)",
+        "Nacionalidad": "Italiano",
+        "Estilo": "Vedutismo",
+        "Epoca": "1719-1768",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Guido Reni",
+        "Nacionalidad": "Italiano",
+        "Estilo": "Barroco",
+        "Epoca": "1595-1642",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Henry Fuseli",
+        "Nacionalidad": "Suizo",
+        "Estilo": "Romanticismo",
+        "Epoca": "1770-1825",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Hieronymus Bosch (El Bosco)",
+        "Nacionalidad": "Neerlandes",
+        "Estilo": "Renacimiento del Norte",
+        "Epoca": "1470-1516",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Hugo van der Goes",
+        "Nacionalidad": "Flamenco",
+        "Estilo": "Primitivos Flamencos",
+        "Epoca": "1467-1482",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Hyacinthe Rigaud",
+        "Nacionalidad": "Frances",
+        "Estilo": "Barroco",
+        "Epoca": "1680-1743",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Jacob Jordaens",
+        "Nacionalidad": "Flamenco",
+        "Estilo": "Barroco",
+        "Epoca": "1615-1678",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Jacques-Louis David",
+        "Nacionalidad": "Frances",
+        "Estilo": "Neoclasicismo",
+        "Epoca": "1770-1825",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Jan Matejko",
+        "Nacionalidad": "Polaco",
+        "Estilo": "Romanticismo",
+        "Epoca": "1852-1893",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Jan van Eyck",
+        "Nacionalidad": "Flamenco",
+        "Estilo": "Primitivos Flamencos",
+        "Epoca": "1422-1441",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Jean-Auguste-Dominique Ingres",
+        "Nacionalidad": "Frances",
+        "Estilo": "Neoclasicismo",
+        "Epoca": "1800-1867",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Jean-Honore Fragonard",
+        "Nacionalidad": "Frances",
+        "Estilo": "Rococo",
+        "Epoca": "1755-1806",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Johannes Vermeer",
+        "Nacionalidad": "Neerlandes",
+        "Estilo": "Barroco",
+        "Epoca": "1653-1675",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "John Everett Millais",
+        "Nacionalidad": "Britanico",
+        "Estilo": "Prerrafaelismo",
+        "Epoca": "1848-1896",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Lawrence Alma-Tadema",
+        "Nacionalidad": "Britanico",
+        "Estilo": "Academicismo",
+        "Epoca": "1852-1912",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Leonardo da Vinci",
+        "Nacionalidad": "Italiano",
+        "Estilo": "Renacimiento",
+        "Epoca": "1472-1519",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Louis-Michel Van Loo",
+        "Nacionalidad": "Frances",
+        "Estilo": "Rococo",
+        "Epoca": "1723-1771",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Mariano Fortuny",
+        "Nacionalidad": "Español",
+        "Estilo": "Realismo, Orientalismo",
+        "Epoca": "1857-1874",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Marten Eskil Winge",
+        "Nacionalidad": "Sueco",
+        "Estilo": "Romanticismo",
+        "Epoca": "1847-1896",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Miguel Angel Buonarroti",
+        "Nacionalidad": "Italiano",
+        "Estilo": "Renacimiento",
+        "Epoca": "1490-1564",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Nicolas Poussin",
+        "Nacionalidad": "Frances",
+        "Estilo": "Clasicismo",
+        "Epoca": "1610-1665",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Paul Cezanne",
+        "Nacionalidad": "Frances",
+        "Estilo": "Postimpresionismo",
+        "Epoca": "1860-1906",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Paul Delaroche",
+        "Nacionalidad": "Frances",
+        "Estilo": "Academicismo",
+        "Epoca": "1815-1856",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Peter Paul Rubens",
+        "Nacionalidad": "Flamenco",
+        "Estilo": "Barroco",
+        "Epoca": "1598-1640",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Piero della Francesca",
+        "Nacionalidad": "Italiano",
+        "Estilo": "Renacimiento",
+        "Epoca": "1432-1492",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Pierre Auguste Cot",
+        "Nacionalidad": "Frances",
+        "Estilo": "Academicismo",
+        "Epoca": "1860-1883",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Pierre Subleyras",
+        "Nacionalidad": "Frances",
+        "Estilo": "Rococo",
+        "Epoca": "1727-1749",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Pieter Bruegel el Viejo",
+        "Nacionalidad": "Flamenco",
+        "Estilo": "Renacimiento",
+        "Epoca": "1551-1569",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Rafael Sanzio",
+        "Nacionalidad": "Italiano",
+        "Estilo": "Renacimiento",
+        "Epoca": "1500-1520",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Rembrandt van Rijn",
+        "Nacionalidad": "Neerlandes",
+        "Estilo": "Barroco",
+        "Epoca": "1625-1669",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Sandro Botticelli",
+        "Nacionalidad": "Italiano",
+        "Estilo": "Renacimiento",
+        "Epoca": "1470-1500",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Theodore Gericault",
+        "Nacionalidad": "Frances",
+        "Estilo": "Romanticismo",
+        "Epoca": "1812-1824",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Thomas Gainsborough",
+        "Nacionalidad": "Britanico",
+        "Estilo": "Rococo",
+        "Epoca": "1745-1788",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Tiziano Vecellio",
+        "Nacionalidad": "Italiano",
+        "Estilo": "Renacimiento",
+        "Epoca": "1506-1576",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "Vincent van Gogh",
+        "Nacionalidad": "Neerlandes",
+        "Estilo": "Postimpresionismo",
+        "Epoca": "1880-1890",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "William Hogarth",
+        "Nacionalidad": "Britanico",
+        "Estilo": "Rococo",
+        "Epoca": "1720-1764",
+        "Ha_pintado": ""
+    },
+    {
+        "Nombre": "William-Adolphe Bouguereau",
+        "Nacionalidad": "Frances",
+        "Estilo": "Academicismo",
+        "Epoca": "1846-1905",
+        "Ha_pintado": ""
+    }
+]    
