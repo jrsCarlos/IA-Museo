@@ -1,0 +1,6 @@
+(load "DataBase.clp")
+(load "templates.clp")
+(load "tipoPreguntas.clp")
+(load "preguntaVisitantes.clp")
+(load "preguntaPreferencias.clp") 
+(load "Main.clp")

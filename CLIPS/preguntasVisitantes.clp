@@ -1,5 +1,5 @@
 (defmodule preguntas-visitantes
-	(import main ?ALL)
+	(import templates ?ALL)
     (import tipo-preguntas ?ALL)
 	(export ?ALL)
 )
