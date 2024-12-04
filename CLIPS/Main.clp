@@ -51,7 +51,8 @@
 	(printout t"¡Bienvenido! A continuacion se le formularan una serie de preguntas para poder recomendarle una visita adecuada a sus preferencias." crlf)
 	(printout t"----------------------------------------------------------" crlf)
     (printout t crlf)
-	(focus preguntas-visitantes)
+
+    (assert (FasePreguntasVitantes1))
     ;(focus preguntas-preferencias)
 )
 

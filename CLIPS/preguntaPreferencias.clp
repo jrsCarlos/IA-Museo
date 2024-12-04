@@ -6,7 +6,7 @@
 )
 
 (defrule pregunta_pintorFavorito "Preguntar por los pintores favoritos"
-    (declare (salience 4))
+    (preguntasPreferencias1)
     ?pintores <- (find-all-instances-of-class Pintor) ; Obtiene todos los pintores
     =>
     (printout t "Por favor, seleccione los autores favoritos de la lista. Ingrese los números separados por espacios si desea seleccionar varios:" crlf)

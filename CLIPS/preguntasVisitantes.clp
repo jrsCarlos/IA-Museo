@@ -5,16 +5,19 @@
 )
 
 (defrule pregunta_nombre "Preguntar el nombre al usuario"
-    (declare (salience 5))
+    (FasePreguntasVitantes1)
 	=>
     (printout t "Por favor, introduzca su nombre: " crlf)
     (bind ?nombre (read))
     (assert (datos_grupo (nombre ?nombre)))
     (printout t "¡Gracias, " ?nombre "! Continuemos con las preguntas." crlf)
+    (retract (FasePreguntasVitantes1))
+    (assert (FasePreguntasVitantes2))
 )
 
 ; Aqui no se podria utilizar pregunta-opciones??
 (defrule pregunta_tipo "Preguntar el tamaño del grupo"
+    (FasePreguntasVitantes2)
 	?grupo <- (datos_grupo (tipoDeVisitantes ?))
     =>
     (printout t "Selecciona el tamaño del grupo de visitantes:" crlf)
@@ -30,9 +33,12 @@
                          "GrupoGrande"))
     )
     (assert (datos_grupo (tipoDeVisitantes ?tipo)))
+    (retract (FasePreguntasVitantes2))
+    (assert (FasePreguntasVitantes3))
 )
 
 (defrule pregunta_conocimiento "Establecer el conocimiento del visitante"
+    (FasePreguntasVitantes3)
     ?grupo <- (datos_grupo (conocimiento ?))
     =>
     (printout t "Evaluaremos su conocimiento en arte. Responda las siguientes preguntas:" crlf)
@@ -88,23 +94,31 @@
     (assert (datos_grupo (conocimiento ?puntos)))
 
     (printout t "Gracias por responder. Su nivel de conocimiento en arte es: " ?puntos "/5." crlf)
+    (retract (FasePreguntasVitantes3))
+    (assert (FasePreguntasVitantes4))
 ); Xinxiang me han molao las preguntas
 
 (defrule pregunta_diasDeVisita "Preguntar el número de días de visita"
+    (FasePreguntasVitantes4)
     ?grupo <- (datos_grupo (dias ?))
     =>
     (printout t "¿Cuántos días desea visitar el museo? (Introduzca un número positivo)" crlf)
     (bind ?dias (pregunta-numerica "Ingrese el número de días" 1 100)) 
     (modify ?grupo (dias ?dias))
+    (retract (FasePreguntasVitantes4))
+    (assert (FasePreguntasVitantes5))
 )
 
 ; Porque aqui haces modify y en las otras reglas haces assert?
 (defrule pregunta_horasVisita "Preguntar la cota superior de horas de visita diaria"
+    (FasePreguntasVitantes5)
     ?grupo <- (datos_grupo (horas ?))
     =>
     (printout t "¿Cuántas horas como máximo desea visitar el museo por día? (Introduzca un número entre 1 y 12)" crlf)
     (bind ?horas (pregunta-numerica "Ingrese el número de horas por día" 1 12)) 
     (modify ?grupo (horas ?horas))
+    (retract (FasePreguntasVitantes5))
+    (assert (FasePreguntasPreferencias1))
 )
 
 ;Haria falta cambiar el foco a preguntas-preferencias?
