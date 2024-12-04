@@ -1,5 +1,5 @@
 (defmodule tipo-preguntas
-    (import main ?ALL)
+    (import templates ?ALL)
     (export ?ALL)
 )
 
