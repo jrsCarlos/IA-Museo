@@ -31,8 +31,8 @@
     (printout t ?pregunta crlf)
     (bind ?entrada (readline))                  ; Lee la entrada del usuario como texto
     (bind ?selecciones (explode$ ?entrada))  ; Divide la entrada en una lista usando espacios
-    (foreach ?i ?selecciones
-        (bind ?selecciones (replace$ ?i (string-to-field ?i)))) ; Convierte las cadenas en números
+    (loop-for-count (?i 1 (length$ ?selecciones)) do
+        (replace$ ?selecciones ?i ?i (string-to-field (nth$ ?i ?selecciones)))) ; Convierte las cadenas en números
     ?selecciones
 )
 
