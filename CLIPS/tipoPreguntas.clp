@@ -40,7 +40,7 @@
     (?list)
     (if (neq (length$ ?list) 0) then
         (bind ?first-element (nth$ 1 ?list))
-        (bind ?rest (remove-duplicates$ (remove ?first-element ?list)))
+        (bind ?rest (remove-duplicates$ (delete-member$ ?list ?first-element)))
         (create$ ?first-element ?rest)
         else (return NULL)
     )
