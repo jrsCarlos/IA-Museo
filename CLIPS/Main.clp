@@ -76,12 +76,13 @@
     (printout t ?pregunta crlf)
     (bind ?entrada (readline))              ; Lee la entrada como cadena
     (bind ?palabras (explode$ ?entrada))    ; Divide la entrada en una lista de cadenas
+    (printout t ?palabras crlf)
     (bind ?selecciones (create$))           ; Crea un multifield vacío
 
-    (foreach ?w ?palabras
-        (bind ?num (eval ?w))               ; Convertimos la cadena a int
+    (foreach ?idx ?palabras
+        ;(bind ?num ?w)               ; Convertimos la cadena a int
         (bind ?selecciones 
-            (insert$ ?selecciones (length$ ?selecciones) ?num)  ; Agregamos el numero a la lista de selecciones
+            (insert$ ?selecciones (+ (length$ ?selecciones) 1) ?idx)  ; Agregamos el numero a la lista de selecciones
         )
     )
 
@@ -295,14 +296,14 @@
 
 (defrule pregunta_tematicaFavorita "Preguntar temáticas favoritas"
     ?state <- (estado septima_pregunta)
-    ?obras <- (find-all-instances-of-class Cuadro)  ; Obtiene todas las obras de arte
     ?preferencias <- (preferencias_grupo)             ; Encuentra el hecho de preferencias_grupo
     =>
     (printout t "Por favor, seleccione las temáticas favoritas de la lista. Ingrese los números separados por espacios si desea seleccionar varias:" crlf)
     
+    (bind ?obras (find-all-instances ((?inst Cuadro)) TRUE))
     (bind ?tematicas (create$))
     (foreach ?obra ?obras
-        (bind ?tematicas (create$ ?tematicas (send ?obra get Tematica)))
+        (bind ?tematicas (create$ ?tematicas (send ?obra get-Tematica)))
     )
     (bind ?tematicas-unicas (remove-duplicates$ ?tematicas)) ; Eliminar duplicados
 
@@ -327,12 +328,13 @@
 
 (defrule pregunta_estiloFavorito "Preguntar estilos favoritos"
     ?state <- (estado octava_pregunta)
-    ?obras <- (find-all-instances-of-class Cuadro)
     ?preferencias <- (preferencias_grupo)
     =>
+
+    (bind ?obras (find-all-instances ((?inst Cuadro)) TRUE))
     (bind ?estilos (create$))
     (foreach ?obra ?obras
-        (bind ?estilos (create$ ?estilos (send ?obra get Estilo)))
+        (bind ?estilos (create$ ?estilos (send ?obra get-Estilo)))
     )
     (bind ?estilos-unicos (remove-duplicates$ ?estilos))
 
@@ -358,12 +360,13 @@
 
 (defrule pregunta_epocaFavorita "Preguntar épocas favoritas"
     ?state <- (estado novena_pregunta)
-    ?obras <- (find-all-instances-of-class Cuadro)
     ?preferencias <- (preferencias_grupo)
     =>
+
+    (bind ?obras (find-all-instances ((?inst Cuadro)) TRUE))
     (bind ?epocas (create$))
     (foreach ?obra ?obras
-        (bind ?epocas (create$ ?epocas (send ?obra get Epoca)))
+        (bind ?epocas (create$ ?epocas (send ?obra get-Epoca)))
     )
     (bind ?epocas-unicas (remove-duplicates$ ?epocas))
 
