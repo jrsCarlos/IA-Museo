@@ -1,7 +1,7 @@
 (defmodule preguntas-preferencias
 	(import templates ?ALL)
     (import tipo-preguntas ?ALL)
-	(import preguntas-visitantes deftemplate ?ALL)
+	
 	(export ?ALL)
 )
 
