@@ -11,14 +11,14 @@
     (slot tipo (type STRING) (default "Indefinido")) 
 	(slot conocimiento (type INTEGER) (default -1)) 
     (slot dias (type INTEGER) (default -1)) 
-    (slot horas (type INTEGER) (default -1)) ; la cota superior de horas de visita en un día.
+    (slot horas (type INTEGER) (default -1))
 )
 
 (deftemplate preferencias_grupo
-	(multislot pintores_favoritos (type INSTANCE))
-	(multislot tematicas_favoritas (type INSTANCE))
-	(multislot estilos_favoritos (type INSTANCE))
-	(multislot epocas_favoritas (type INSTANCE))
+	(multislot pintores_favoritos (type INSTANCE) (default (create$)))
+	(multislot tematicas_favoritas (type INSTANCE) (default (create$)))
+	(multislot estilos_favoritos (type INSTANCE) (default (create$)))
+	(multislot epocas_favoritas (type INSTANCE) (default (create$)))
 )
 
 ;================================================================================================;
@@ -39,14 +39,9 @@
 (defmodule preguntas-preferencias
     (import MAIN ?ALL)
     (import tipo-preguntas ?ALL)
-    (import preguntas-visitantes deftemplate ?ALL)
+    (import preguntas-visitantes ?ALL)
     (export ?ALL)
 )
-
-;================================================================================================;
-;=========================================== MENSAJES ===========================================;
-;================================================================================================;
-
 
 ;================================================================================================;
 ;=========================================== FUNCIONES ==========================================;
@@ -93,8 +88,6 @@
     ?selecciones
 )
 
-; Esta función recibe un valor ?el y una lista ?lst
-; y devuelve una lista idéntica a ?lst pero sin ?el.
 (deffunction remove-all-instances$ (?el ?lst)
    (if (eq (length$ ?lst) 0) then
       (return ?lst)
@@ -111,7 +104,6 @@
    )
 )
 
-; Ahora la función principal:
 (deffunction remove-duplicates$ (?list)
    (if (eq (length$ ?list) 0) then
        (return ?list)
@@ -140,14 +132,18 @@
     (printout t crlf)
 
     (assert (datos_grupo))
-    (assert (preferencias_grupo))
     (assert (estado flujo_inicial))
 
-	(focus preguntas-visitantes)
+    (focus preguntas-visitantes)
+)
+
+(defrule MAIN::mid
+    =>
+    (printout t "SAPO1" crlf)
+    (assert (estado sexta_pregunta))
     (focus preguntas-preferencias)
 )
 
-;Preguntar al profe si hace falta validación de entrada
 (set-current-module preguntas-visitantes)
 (defrule pregunta_nombre "Preguntar el nombre al usuario"
     ?state <- (estado flujo_inicial)
@@ -263,21 +259,19 @@
     
     (modify ?grupo (horas ?horas))
     (retract ?state)
-    (assert (estado sexta_pregunta))
-    (focus MAIN)
 )
 
 (set-current-module preguntas-preferencias)
+
 (defrule pregunta_pintorFavorito "Preguntar por los pintores favoritos"
     ?state <- (estado sexta_pregunta)
-    ?preferencias <- (preferencias_grupo)
-    ?pintores_raw <- (find-all-instances-of-class Pintor)
     =>
     (printout t "Por favor, seleccione los autores favoritos de la lista. Ingrese los números separados por espacios si desea seleccionar varios:" crlf)
     
+    (bind ?pintores_raw (find-all-instances ((?inst Pintor)) TRUE))
     (bind ?pintores (create$))
     (foreach ?pintor ?pintores_raw
-        (bind ?pintores (create$ ?pintores (send ?pintor get Nombre)))
+        (bind ?pintores (create$ ?pintores (send ?pintor get-Nombre)))
     )
 
     (bind ?count 0)
@@ -293,7 +287,8 @@
         (bind ?pintores-fav (create$ ?pintores-fav (nth$ ?idx ?pintores)))
     )
 
-    (modify ?preferencias (pintores_favoritos ?pintores-fav))
+    (assert (preferencias_grupo (pintores_favoritos ?pintores-fav))) 
+    ;(modify ?preferencias (pintores_favoritos ?pintores-fav))
     (retract ?state)
     (assert (estado septima_pregunta))
 )
@@ -392,15 +387,17 @@
     (focus MAIN)
 )
 
-(defrule MAIN::imprimir-datos-recolectados
+(defrule MAIN::imprimir-datos
     "Imprime todos los datos recolectados del usuario"
+    ?grupo <- (datos_grupo)
+    ?preferencias <- (preferencias_grupo)
     =>
     (printout t crlf "----------------------------------------------------------" crlf)
     (printout t "Resumen de datos recolectados:" crlf)
     (printout t "----------------------------------------------------------" crlf)
 
     ;; Datos del grupo
-    (foreach ?dato (find-all-facts ((?f datos_grupo)) TRUE)
+    (foreach ?dato ?grupo
         (printout t "Nombre: " (fact-slot-value ?dato nombre) crlf)
         (printout t "Tipo de Visitantes: " (fact-slot-value ?dato tipo) crlf)
         (printout t "Conocimiento en Arte: " (fact-slot-value ?dato conocimiento) "/5" crlf)
@@ -409,7 +406,7 @@
     )
 
     ;; Preferencias del grupo
-    (foreach ?pref (find-all-facts ((?f preferencias_grupo)) TRUE)
+    (foreach ?pref ?preferencias
         (printout t "Autores favoritos: " (fact-slot-value ?pref pintores_favoritos) crlf)
         (printout t "Temáticas favoritas: " (fact-slot-value ?pref tematicas_favoritas) crlf)
         (printout t "Estilos favoritos: " (fact-slot-value ?pref estilos_favoritos) crlf)
