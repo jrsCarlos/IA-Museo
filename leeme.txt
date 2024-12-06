@@ -1,0 +1,9 @@
+Para ejecutar el recomendador sigue estos pasos:
+
+    1.- Abrir el CLIPSIDE o terminal
+    2.- Navega hasta la carpeta CLIPS de este Proyecto
+    3.- Ejecutar el comando: (batch LoadFiles.clp)
+    4.- Contesta las preguntas que te pide
+
+Este prototipo de momento es capaz de recomendar una serie de cuadros en función
+de las preferencias de Epocas introducidas por el usuario.
