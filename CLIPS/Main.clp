@@ -390,17 +390,15 @@
     (focus MAIN)
 )
 
-(defrule MAIN::imprimir-datos
+(defrule MAIN::imprimir-datos-recolectados
     "Imprime todos los datos recolectados del usuario"
-    ?grupo <- (datos_grupo)
-    ?preferencias <- (preferencias_grupo)
     =>
     (printout t crlf "----------------------------------------------------------" crlf)
     (printout t "Resumen de datos recolectados:" crlf)
     (printout t "----------------------------------------------------------" crlf)
 
     ;; Datos del grupo
-    (foreach ?dato ?grupo
+    (foreach ?dato (find-all-facts ((?f datos_grupo)) TRUE)
         (printout t "Nombre: " (fact-slot-value ?dato nombre) crlf)
         (printout t "Tipo de Visitantes: " (fact-slot-value ?dato tipo) crlf)
         (printout t "Conocimiento en Arte: " (fact-slot-value ?dato conocimiento) "/5" crlf)
@@ -409,7 +407,7 @@
     )
 
     ;; Preferencias del grupo
-    (foreach ?pref ?preferencias
+    (foreach ?pref (find-all-facts ((?f preferencias_grupo)) TRUE)
         (printout t "Autores favoritos: " (fact-slot-value ?pref pintores_favoritos) crlf)
         (printout t "Temáticas favoritas: " (fact-slot-value ?pref tematicas_favoritas) crlf)
         (printout t "Estilos favoritos: " (fact-slot-value ?pref estilos_favoritos) crlf)
