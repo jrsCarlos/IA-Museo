@@ -9,23 +9,26 @@
 ;============================================== DATOS ==============================================;
 ;===================================================================================================;
 
-; Leemos el nombre del usuario
+; Pregunta al usuario por su nombre
 (defrule preguntar-nombre
-    ; Verificamos que la primera pregunta no haya sido respondida
-    ?state <- (estado (primera_pregunta ?t)) (test (eq ?t TRUE))
+    ?state <- (estado (pregunta-1 1))
     ?grupo <- (datos-grupo)
 	=>
     (printout t "Introduzca su nombre: " crlf)
     (bind ?nombre (read))
+
+    ; Guardamos el nombre en el template
     (modify ?grupo (nombre ?nombre))
     (retract ?state)
-    (assert (estado (segunda_pregunta TRUE)))
+
+    ; Activamos la siguiente pregunta
+    (assert (estado (pregunta-2 1)))
     (printout t crlf)
 )
 
-; Preguntamos el tamaño del grupo
+; Pregunta al usuario por el tipo de visitante
 (defrule preguntar-tipo
-    ?state <- (estado (segunda_pregunta ?t)) (test (eq ?t TRUE))
+    ?state <- (estado (pregunta-2 1))
 	?grupo <- (datos-grupo)
     =>
     (printout t "Selecciona el tamaño del grupo de visitantes:" crlf)
@@ -33,49 +36,58 @@
     (printout t "2. Una familia" crlf)
     (printout t "3. Un grupo pequeño (2-5 personas)" crlf)
     (printout t "4. Un grupo grande (>5 personas)" crlf)
-    (bind ?opcion (pregunta-numerica "Elija una opción" 1 4))
-    (bind ?tipo (nth$ ?opcion 
-                (create$ "Persona" 
-                         "Familia" 
-                         "GrupoPequeno" 
-                         "GrupoGrande"))
-    )
+    (bind ?opcion (pregunta-numerica "Ingresa un número del 1 al 4" 1 4))
+
+    ; Obtenemos el tipo de visitante
+    (bind $?opciones (create$ "Persona" "Familia" "GrupoPequeno" "GrupoGrande"))
+    (bind ?tipo (nth$ ?opcion ?opciones))
+
+    ; Guardamos el tipo de visitante en el template
     (modify ?grupo (tipo ?tipo))
     (retract ?state)
-    (assert (estado (tercera_pregunta TRUE)))
+
+    ; Activamos la siguiente pregunta
+    (assert (estado (pregunta-3 1)))
     (printout t crlf)
 )
 
-; Preguntamos cuantos dias tiene planeado visitar el museo
+; Pregunta al usuario por el numero de dias que durara su visita
 (defrule preguntar-dias
-    ?state <- (estado (tercera_pregunta ?t)) (test (eq ?t TRUE))
+    ?state <- (estado (pregunta-3 1))
     ?grupo <- (datos-grupo)
     =>
-    (printout t "¿Cuántos días desea visitar el museo?" crlf)
-    (bind ?dias (pregunta-numerica "Ingrese el número de días" 1 7)) 
+    (printout t "¿Cuántos días durará su visita al Museo?" crlf)
+    (bind ?dias (pregunta-numerica "Ingresa un número del 1 al 7" 1 7))
+
+    ; Guardamos el numero de dias en el template
     (modify ?grupo (dias ?dias))
     (retract ?state)
-    (assert (estado (cuarta_pregunta TRUE)))
+
+    ; Activamos la siguiente pregunta
+    (assert (estado (pregunta-4 1)))
     (printout t crlf)
 )
 
-; Preguntamos cuantas horas, como maximo, desea visitar el museo por dia
+; Pregunta al usuario por el numero de horas que desea visitar el museo por dia
 (defrule preguntar-horas
-    ?state <- (estado (cuarta_pregunta ?t)) (test (eq ?t TRUE))
+    ?state <- (estado (pregunta-4 1))
     ?grupo <- (datos-grupo)
     =>
-    (printout t "¿Cuántas horas, como máximo, desea visitar el museo por día? (Introduzca un número entre 1 y 8)" crlf)
-    (bind ?horas (pregunta-numerica "Ingrese el número de horas por día" 1 8)) 
+    (printout t "¿Cuántas horas, como máximo, deseas visitar el museo por día?" crlf)
+    (bind ?horas (pregunta-numerica "Ingresa un número del 1 al 8" 1 8)) 
     
+    ; Guardamos el numero de horas en el template
     (modify ?grupo (horas ?horas))
     (retract ?state)
-    (assert (estado (quinta_pregunta TRUE)))
+
+    ; Activamos la siguiente pregunta
+    (assert (estado (pregunta-5 1)))
     (printout t crlf)
 )
 
-; Determinamos el conocimiento del usuario en base a preguntas
+; Determina el conocimiento del usuario en base a preguntas artisticas
 (defrule preguntar-conocimiento
-    ?state <- (estado (quinta_pregunta ?t)) (test (eq ?t TRUE))
+    ?state <- (estado (pregunta-5 1))
     ?grupo <- (datos-grupo)
     =>
     (printout t "Por útimo, responda las siguientes preguntas:" crlf)
@@ -87,7 +99,7 @@
     (printout t "   2. Pablo Picasso" crlf)
     (printout t "   3. Vincent van Gogh" crlf)
     (printout t "   4. Claude Monet" crlf)
-    (bind ?respuesta1 (pregunta-numerica "Elija una opción" 1 4))
+    (bind ?respuesta1 (pregunta-numerica "Ingresa un número del 1 al 4" 1 4))
     (if (eq ?respuesta1 1) then (bind ?puntos (+ ?puntos 1)))
     (printout t crlf)
 
@@ -97,7 +109,7 @@
     (printout t "   2. Siglo XIV al XVI" crlf)
     (printout t "   3. Siglo XVII" crlf)
     (printout t "   4. Siglo XVIII" crlf)
-    (bind ?respuesta2 (pregunta-numerica "Elija una opción" 1 4))
+    (bind ?respuesta2 (pregunta-numerica "Ingresa un número del 1 al 4" 1 4))
     (if (eq ?respuesta2 2) then (bind ?puntos (+ ?puntos 1)))
     (printout t crlf)
 
@@ -107,7 +119,7 @@
     (printout t "   2. Uso dramático de la luz y el movimiento" crlf)
     (printout t "   3. Representaciones abstractas" crlf)
     (printout t "   4. Colores pastel y escenas idílicas" crlf)
-    (bind ?respuesta3 (pregunta-numerica "Elija una opción" 1 4))
+    (bind ?respuesta3 (pregunta-numerica "Ingresa un número del 1 al 4" 1 4))
     (if (eq ?respuesta3 2) then (bind ?puntos (+ ?puntos 1)))
     (printout t crlf)
 
@@ -117,7 +129,7 @@
     (printout t "   2. La noche estrellada" crlf)
     (printout t "   3. El grito" crlf)
     (printout t "   4. La Gioconda" crlf)
-    (bind ?respuesta4 (pregunta-numerica "Elija una opción" 1 4))
+    (bind ?respuesta4 (pregunta-numerica "Ingresa un número del 1 al 4" 1 4))
     (if (eq ?respuesta4 2) then (bind ?puntos (+ ?puntos 1)))
     (printout t crlf)
 
@@ -127,14 +139,17 @@
     (printout t "   2. Sandro Botticelli" crlf)
     (printout t "   3. Rafael Sanzio" crlf)
     (printout t "   4. Pieter Bruegel el Viejo" crlf)
-    (bind ?respuesta5 (pregunta-numerica "Elija una opción" 1 4))
+    (bind ?respuesta5 (pregunta-numerica "Ingresa un número del 1 al 4" 1 4))
     (if (eq ?respuesta5 1) then (bind ?puntos (+ ?puntos 1)))
     (printout t crlf)
-
     (printout t "Gracias por responder!" crlf)
+
+    ; Guardamos el conocimiento en el template
     (modify ?grupo (conocimiento ?puntos))
     (retract ?state)
-    (assert (estado (sexta_pregunta TRUE)))
+
+    ; Activamos la siguiente pregunta
+    (assert (estado (pregunta-6 1)))
     (printout t crlf)
 )
 
@@ -142,132 +157,162 @@
 ;=========================================== PREFERENCIAS ==========================================;
 ;===================================================================================================;
 
-; Preguntamos por los pintores favoritos del usuario
+; Pregunta al usuario por sus pintores favoritos
 (defrule preguntar-pintor-favorito
-    ?state <- (estado (sexta_pregunta ?t)) (test (eq ?t TRUE))
+    ?state <- (estado (pregunta-6 1))
+    ?preferencias <- (preferencias-grupo)
     =>
-    (printout t "Seleccione a sus pintores favoritos de la lista. Ingrese los números separados por espacios si desea seleccionar varios:" crlf)
-    
-    (bind ?pintores_raw (find-all-instances ((?inst Pintor)) TRUE))
+    (printout t "Selecciona tus pintores favoritos de la lista." crlf)
+
+    ; Obtenemos las instancias de los pintores
+    (bind ?instancias (find-all-instances ((?inst Pintor)) TRUE))
+
+    ; Obtenemos los nombres de los pintores
     (bind ?pintores (create$))
-    (foreach ?pintor ?pintores_raw
+    (foreach ?pintor ?instancias
         (bind ?pintores (create$ ?pintores (send ?pintor get-Nombre)))
     )
 
+    ; Indexamos los pintores
     (bind ?count 0)
     (foreach ?autor ?pintores
         (bind ?count (+ ?count 1))
         (printout t "   " ?count ". " ?autor crlf)
     )
     
-    (bind ?selecciones (pregunta-multiseleccion "Selecciona los autores por número separados por espacios"))
+    (bind ?selecciones (pregunta-multiseleccion "Introduce los números de tus pintores preferidos, separados por espacios"))
 
+    ; Obtenemos los pintores seleccionados
     (bind ?pintores-fav (create$))
     (foreach ?idx ?selecciones
         (bind ?pintores-fav (create$ ?pintores-fav (nth$ ?idx ?pintores)))
     )
 
-    (assert (preferencias-grupo (pintores ?pintores-fav))) 
-    ;(modify ?preferencias (pintores ?pintores-fav))
+    ; Guardamos los pintores favoritos en el template
+    (modify ?preferencias (pintores ?pintores-fav))
     (retract ?state)
-    (assert (estado (septima_pregunta TRUE)))
+
+    ; Activamos la siguiente pregunta
+    (assert (estado (pregunta-7 1)))
+    (printout t crlf)
 )
 
-; Preguntamos por las tematicas favoritas del usuario
+; Pregunta al usuario por sus tematicas favoritas
 (defrule pregunta-tematica-favorita
-    ?state <- (estado (septima_pregunta ?t)) (test (eq ?t TRUE))
+    ?state <- (estado (pregunta-7 1))
     ?preferencias <- (preferencias-grupo)
     =>
-    (printout t "Seleccione sus temáticas favoritas de la lista. Ingrese los números separados por espacios si desea seleccionar varias:" crlf)
+    (printout t "Selecciona tus temáticas favoritas de la lista." crlf)
     
-    (bind ?obras (find-all-instances ((?inst Cuadro)) TRUE))
+    ; Obtenemos las instancias de los cuadros
+    (bind ?instancias (find-all-instances ((?inst Cuadro)) TRUE))
+
+    ; Obtenemos las tematicas de los cuadros
     (bind ?tematicas (create$))
-    (foreach ?obra ?obras
+    (foreach ?obra ?instancias
         (bind ?tematicas (create$ ?tematicas (send ?obra get-Tematica)))
     )
-    (bind ?tematicas-unicas (remove-duplicates$ ?tematicas))
+    (bind ?tematicas-unicas (eliminar-repetidos$ ?tematicas))
 
+    ; Indexamos las tematicas
     (bind ?count 0)
     (foreach ?tematica ?tematicas-unicas
         (bind ?count (+ ?count 1))
         (printout t "   " ?count ". " ?tematica crlf)
     )
 
-    (bind ?selecciones (pregunta-multiseleccion "Seleccione las temáticas por número separadas por espacios"))
+    (bind ?selecciones (pregunta-multiseleccion "Introduce los números de tus temáticas preferidas, separados por espacios"))
 
+    ; Obtenemos las tematicas seleccionadas
     (bind ?tematicas-fav (create$))
     (foreach ?idx ?selecciones
         (bind ?tematicas-fav (create$ ?tematicas-fav (nth$ ?idx ?tematicas-unicas)))
     )
 
+    ; Guardamos las tematicas favoritas en el template
     (modify ?preferencias (tematicas ?tematicas-fav))
     (retract ?state)
-    (assert (estado (octava_pregunta TRUE)))
+
+    ; Activamos la siguiente pregunta
+    (assert (estado (pregunta-8 1)))
+    (printout t crlf)
 )
 
-; Preguntamos por los estilos favoritos del usuario
+; Pregunta al usuario por sus estilos favoritos
 (defrule pregunta-estilo-favorito
-    ?state <- (estado (octava_pregunta ?t)) (test (eq ?t TRUE))
+    ?state <- (estado (pregunta-8 1))
     ?preferencias <- (preferencias-grupo)
-
     =>
+    (printout t "Selecciona tus estilos favoritos de la lista" crlf)
 
-    (bind ?obras (find-all-instances ((?inst Cuadro)) TRUE))
+    ; Obtenemos las instancias de los cuadros
+    (bind ?instancias (find-all-instances ((?inst Cuadro)) TRUE))
+
+    ; Obtenemos los estilos de los cuadros
     (bind ?estilos (create$))
-    (foreach ?obra ?obras
+    (foreach ?obra ?instancias
         (bind ?estilos (create$ ?estilos (send ?obra get-Estilo)))
     )
-    (bind ?estilos-unicos (remove-duplicates$ ?estilos))
-
-    (printout t "Seleccione los estilos favoritos de la lista. Ingrese los números separados por espacios si desea seleccionar varios:" crlf)
+    (bind ?estilos-unicos (eliminar-repetidos$ ?estilos))
     
+    ; Indexamos los estilos
     (bind ?count 0)
     (foreach ?estilo ?estilos-unicos
         (bind ?count (+ ?count 1))
         (printout t "   " ?count ". " ?estilo crlf)
     )
 
-    (bind ?selecciones (pregunta-multiseleccion "Seleccione los estilos por número separados por espacios"))
+    (bind ?selecciones (pregunta-multiseleccion "Introduce los números de tus estilos preferidos, separados por espacios"))
 
+    ; Obtenemos los estilos seleccionados
     (bind ?estilos-fav (create$))
     (foreach ?idx ?selecciones
         (bind ?estilos-fav (create$ ?estilos-fav (nth$ ?idx ?estilos-unicos)))
     )
 
+    ; Guardamos los estilos favoritos en el template
     (modify ?preferencias (estilos ?estilos-fav))
     (retract ?state)
-    (assert (estado (novena_pregunta TRUE)))
+
+    ; Activamos la siguiente pregunta
+    (assert (estado (pregunta-9 1)))
+    (printout t crlf)
 )
 
-; Preguntamos por las epocas favoritas del usuario
+; Pregunta al usuario por sus epocas favoritas
 (defrule pregunta-epoca-favorita
-    ?state <- (estado (novena_pregunta ?t)) (test (eq ?t TRUE))
+    ?state <- (estado (pregunta-9 1))
     ?preferencias <- (preferencias-grupo)
     =>
+    (printout t "Selecciona tus épocas favoritas de la lista." crlf)
 
-    (bind ?obras (find-all-instances ((?inst Cuadro)) TRUE))
+    ; Obtenemos las instancias de los cuadros
+    (bind ?instancias (find-all-instances ((?inst Cuadro)) TRUE))
+
+    ; Obtenemos las epocas de los cuadros
     (bind ?epocas (create$))
-    (foreach ?obra ?obras
+    (foreach ?obra ?instancias
         (bind ?epocas (create$ ?epocas (send ?obra get-Epoca)))
     )
-    (bind ?epocas-unicas (remove-duplicates$ ?epocas))
-
-    (printout t "Seleccione las épocas favoritas de la lista. Ingrese los números separados por espacios si desea seleccionar varias:" crlf)
+    (bind ?epocas-unicas (eliminar-repetidos$ ?epocas))
     
+    ; Indexamos las epocas
     (bind ?count 0)
     (foreach ?epoca ?epocas-unicas
         (bind ?count (+ ?count 1))
         (printout t "   " ?count ". " ?epoca crlf)
     )
 
-    (bind ?selecciones (pregunta-multiseleccion "Seleccione las épocas por número separados por espacios"))
+    (bind ?selecciones (pregunta-multiseleccion "Introduce los números de tus épocas preferidas, separados por espacios"))
 
+    ; Obtenemos las epocas seleccionadas
     (bind ?epocas-fav (create$))
     (foreach ?idx ?selecciones
         (bind ?epocas-fav (create$ ?epocas-fav (nth$ ?idx ?epocas-unicas)))
     )
 
+    ; Guardamos las epocas favoritas en el template
     (modify ?preferencias (epocas ?epocas-fav))
     (retract ?state)
-    (focus MAIN)
+    (printout t crlf)
 )

@@ -22,13 +22,14 @@
 
 ; Template para almacenar el estado de las preguntas que controlan el flujo del programa
 (deftemplate estado
-    (slot primera_pregunta (type SYMBOL) (allowed-values TRUE FALSE) (default FALSE)) 
-    (slot segunda_pregunta (type SYMBOL) (allowed-values TRUE FALSE) (default FALSE)) 
-    (slot tercera_pregunta (type SYMBOL) (allowed-values TRUE FALSE) (default FALSE)) 
-    (slot cuarta_pregunta  (type SYMBOL) (allowed-values TRUE FALSE) (default FALSE)) 
-    (slot quinta_pregunta  (type SYMBOL) (allowed-values TRUE FALSE) (default FALSE)) 
-    (slot sexta_pregunta   (type SYMBOL) (allowed-values TRUE FALSE) (default FALSE)) 
-    (slot septima_pregunta (type SYMBOL) (allowed-values TRUE FALSE) (default FALSE)) 
-    (slot octava_pregunta  (type SYMBOL) (allowed-values TRUE FALSE) (default FALSE)) 
-    (slot novena_pregunta  (type SYMBOL) (allowed-values TRUE FALSE) (default FALSE)) 
+    ; Pese a que las preguntas son de tipo INTEGER, cumplen la funcion de booleanos
+    (slot pregunta-1 (type INTEGER) (default 0))
+    (slot pregunta-2 (type INTEGER) (default 0))
+    (slot pregunta-3 (type INTEGER) (default 0))
+    (slot pregunta-4 (type INTEGER) (default 0))
+    (slot pregunta-5 (type INTEGER) (default 0))
+    (slot pregunta-6 (type INTEGER) (default 0))
+    (slot pregunta-7 (type INTEGER) (default 0))
+    (slot pregunta-8 (type INTEGER) (default 0))
+    (slot pregunta-9 (type INTEGER) (default 0))
 )

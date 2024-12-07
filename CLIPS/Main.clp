@@ -6,18 +6,23 @@
     (export ?ALL)
 )
 
-(defrule MAIN::ini "Iniciamos el programa"
+(defrule MAIN::inicio
 	(declare (salience 10))
 	=>
   	(printout t crlf)  	
-    (printout t "-----------------------------------------------------------------------------------------------------------------------------------" crlf)
-	(printout t "¡Bienvenido! A continuacion se le formularan una serie de preguntas para poder recomendarle una visita adecuada a sus preferencias." crlf)
-	(printout t "-----------------------------------------------------------------------------------------------------------------------------------" crlf)
+    (printout t "-------------------------------------------------------------------------------" crlf)
+    (printout t "                                  ¡Bienvenid@!                                 " crlf)
+	(printout t "A continuación se le formularán una serie de preguntas sus datos y preferencias" crlf)
+    (printout t "     artísticas para poder organizarle una visita guiada por nuestro museo     " crlf)
+    (printout t "-------------------------------------------------------------------------------" crlf)
     (printout t crlf)
 
+    ; Ceamos las variables donde almacenaremos la informacion del usuario
     (assert (datos-grupo))
-    (assert (estado (primera_pregunta TRUE)))
+    (assert (preferencias-grupo))
 
+    ; Iniciamos el flujo de preguntas
+    (assert (estado (pregunta-1 1)))
     (focus PreguntasUsuario)
 )
 

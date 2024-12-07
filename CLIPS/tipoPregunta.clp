@@ -1,60 +1,54 @@
 (defmodule TipoPregunta (export ?ALL))
 
+;===================================================================================================;
+;============================================ PREGUNTAS ============================================;
+;===================================================================================================;
+
+; Hace una pregunta cuya respuesta puede contener mas de una opcion
 (deffunction pregunta-multiseleccion (?pregunta)
+    ; Hacemos la pregunta
     (printout t ?pregunta crlf)
     (bind ?entrada (readline))
+
+    ; Separamos las palabras
     (bind ?palabras (explode$ ?entrada))
-    (printout t ?palabras crlf)
+
+    ; Creamos una lista vacia para guardar las selecciones
     (bind ?selecciones (create$))
-
     (foreach ?idx ?palabras
-        (bind ?selecciones 
-            (insert$ ?selecciones (+ (length$ ?selecciones) 1) ?idx)
-        )
+        ; Añadimos la seleccion a la lista
+        (bind ?selecciones (insert$ ?selecciones (+ (length$ ?selecciones) 1) ?idx))
     )
-
     ?selecciones
 )
 
+; Hace una pregunta cuya respuesta es un numero dentro de un rango
 (deffunction pregunta-numerica (?pregunta ?rangini ?rangfi)
-	(format t "%s (De %d hasta %d) " ?pregunta ?rangini ?rangfi)
+    ; Hacemos la pregunta
+    (printout t ?pregunta crlf)
 	(bind ?respuesta (read))
+
+    ; Mientras la respuesta no este en el rango permitido, volvemos a preguntar
 	(while (not (and (>= ?respuesta ?rangini) (<= ?respuesta ?rangfi))) do 
-        (format t "%s (De %d hasta %d) " ?pregunta ?rangini ?rangfi)
+        (printout t ?pregunta crlf)
         (bind ?respuesta (read))
 	)
 	?respuesta
 )
 
-(deffunction pregunta-opciones (?pregunta $?valores-posibles)
-    (bind ?linea (format nil "%s" ?pregunta))
-    (printout t ?linea crlf)
-    (progn$ (?var ?valores-posibles)
-            (bind ?linea (format nil "  %d. %s" ?var-index ?var))
-            (printout t ?linea crlf)
-    )
-    (bind ?respuesta (pregunta-numerica "Escoge una opcion:" 1 (length$ ?valores-posibles)))
-	?respuesta
-)
+;===================================================================================================;
+;======================================== FUNCIONES AUXILIARES =====================================;
+;===================================================================================================;
 
-(deffunction remove-all-instances$ (?el ?lst)
-    (if (eq (length$ ?lst) 0) then (return ?lst))
-    (bind ?head (nth$ 1 ?lst))
-    (bind ?tail (subseq$ ?lst 2 (length$ ?lst)))
-    (if (eq ?head ?el) then
-        (return (remove-all-instances$ ?el ?tail))
-    else
-        (return (create$ ?head (remove-all-instances$ ?el ?tail)))
+; Elimina los elementos repetidos de una lista
+(deffunction eliminar-repetidos$ ($?lista)
+    ; Inicializamos una lista vacía
+    (bind ?resultado (create$))
+    (foreach ?elemento ?lista
+        ; Si el elemento no esta en la lista resultado, lo afegim
+        (if (not (member$ ?elemento ?resultado)) then
+            (bind ?resultado (create$ ?resultado ?elemento))
+        )
     )
-)
-
-(deffunction remove-duplicates$ (?list)
-    (if (eq (length$ ?list) 0) then
-        (return ?list)
-    )
-    (bind ?head (nth$ 1 ?list))
-    (bind ?tail (subseq$ ?list 2 (length$ ?list)))
-    (bind ?filtered-tail (remove-all-instances$ ?head ?tail))
-    (bind ?rest (remove-duplicates$ ?filtered-tail))
-    (return (create$ ?head ?rest))
+    ?resultado
 )
