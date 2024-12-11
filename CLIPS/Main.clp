@@ -3,10 +3,11 @@
     (import Templates ?ALL)
     (import TipoPregunta ?ALL)
     (import PreguntasUsuario ?ALL)
+    (import PlanearItinerario ?ALL)
     (export ?ALL)
 )
 
-(defrule MAIN::inicio
+(defrule MAIN::Inicio
 	(declare (salience 10))
 	=>
   	(printout t crlf)  	
@@ -24,6 +25,34 @@
     ; Iniciamos el flujo de preguntas
     (assert (estado (pregunta-1 1)))
     (focus PreguntasUsuario)
+    ; Hacer make-instance de visitante
+    ;Crear una clase visita que tenga atributo multislot dias que cada dia almacena un conjunto de cuadros
+)
+
+(defrule MAIN::GenerarRecorrido
+    ?grupo <- (datos-grupo)
+    ?preferencias <- (preferencias-grupo)
+    =>
+    ; Creamos la instancia del itinerario
+    (make-instance [ItinerarioMuseo] of Itinerario
+        (DiasDeVisita (fact-slot-value ?grupo dias))
+        (Compuesto_de (create$))
+    )
+
+    ; Creamos la instancia del visitante
+    (make-instance [Usuario] of Visitante
+        (Nombre (fact-slot-value ?grupo nombre))
+        (Tipo (fact-slot-value ?grupo tipo))
+        (Conocimiento (fact-slot-value ?grupo conocimiento))
+        (Preferencias (create$ (fact-slot-value ?preferencias pintores)
+                               (fact-slot-value ?preferencias tematicas)
+                               (fact-slot-value ?preferencias estilos)
+                               (fact-slot-value ?preferencias epocas))
+        )
+        (Realiza [ItinerarioMuseo])
+    )
+    
+    (focus PlanearItinerario)
 )
 
 (deffunction MAIN::imprimir-recomendacion

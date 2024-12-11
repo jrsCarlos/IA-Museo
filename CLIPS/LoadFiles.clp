@@ -3,6 +3,7 @@
 (load Templates.clp)
 (load TipoPregunta.clp)
 (load PreguntasUsuario.clp)
+(load PlanearItinerario.clp)
 (load Main.clp)
 (reset)
 (run)

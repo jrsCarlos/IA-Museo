@@ -52,3 +52,15 @@
     )
     ?resultado
 )
+
+; Determina la complejidad de un cuadro en función de sus dimensiones
+(deffunction derivar-complejidad (?dimensiones)
+    ; Extraemos la altura y la anchura de las dimensiones
+    (bind ?dimensiones (explode$ ?dimensiones))
+    (bind ?altura  (nth$ 1 ?dimensiones))
+    (bind ?anchura (nth$ 3 ?dimensiones))
+
+    ; La complejiad se corresponde con el area del cuadro
+    (bind ?area (* ?altura ?anchura))
+    ?area
+)

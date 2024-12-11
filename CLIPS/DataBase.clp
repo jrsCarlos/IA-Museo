@@ -10,6 +10,9 @@
     (slot Nombre
         (type STRING)
         (create-accessor read-write))
+    (multislot Contiene   ;Relacion con Cuadro
+        (type INSTANCE)
+        (create-accessor read-write))
 )
 
 ;--------------------------------------------------;
@@ -81,27 +84,67 @@
 ;-------------------- VISITANTE -------------------;
 ;--------------------------------------------------;
 
-(defclass Visitantes
+(defclass Visitante
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
     (slot Nombre
         (type STRING)
         (create-accessor read-write))
-    (slot TipoDeVisitante
+    (slot Tipo
         (type STRING)
-        (create-accessor read-write))
-    (slot DiasDeVisita      ;a lo mejor se mueve a otra clase
-        (type INTEGER)
-        (create-accessor read-write))
-    (slot DuracionVisita    ;a lo mejor se mueve a otra clase
-        (type INTEGER)
         (create-accessor read-write))
     (slot Conocimiento
         (type INTEGER)
         (create-accessor read-write))
     (multislot Preferencias
         (type STRING)
+        (create-accessor read-write))
+    (slot Realiza
+        (type INSTANCE)
+        (create-accessor read-write))
+)
+
+;--------------------------------------------------;
+;---------------------- VISITA --------------------;
+;--------------------------------------------------;
+
+(defclass Itinerario
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+    (slot DiasDeVisita
+        (type INTEGER)
+        (create-accessor read-write))
+    (slot HorasDeVisitaMax
+        (type INTEGER)
+        (create-accessor read-write))
+    (multislot Compuesto_de ; Relacion con Visita. Se relaiza una visita por dia
+        (type INSTANCE)
+        (create-accessor read-write))
+)
+
+(defclass Visita
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+    (multislot Realizada_en     ;Relacion con Sala
+        (type INSTANCE)
+        (create-accessor read-write))
+    (multislot Se_realizan       ;Relacion con Observacion
+        (type INSTANCE)
+        (create-accessor read-write))
+)
+
+(defclass Observacion
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
+    (slot Cuadro                ;Relacion con Cuadro
+        (type INSTANCE)
+        (create-accessor read-write))
+    (slot Tiempo
+        (type INTEGER)
         (create-accessor read-write))
 )
 
@@ -111,28 +154,140 @@
 
 (definstances Salas
     ([SalaRenacimiento] of Sala
-        (Nombre "Sala 1: Renacimiento"))
+        (Nombre "Sala 1: Renacimiento")
+        (Contiene [Cuadro1]
+                  [Cuadro2]
+                  [Cuadro3]
+                  [Cuadro4]
+                  [Cuadro5]
+                  [Cuadro6]
+                  [Cuadro7]
+                  [Cuadro8]
+                  [Cuadro9]
+                  [Cuadro10]
+                  [Cuadro11]
+                  [Cuadro12]
+                  [Cuadro13]
+                  [Cuadro14]
+                  [Cuadro15]
+                  [Cuadro16]
+                  [Cuadro17]
+                  [Cuadro18]
+                  [Cuadro23]
+        )
+    )
 
     ([SalaBarroco] of Sala
-        (Nombre "Sala 2: Barroco"))
+        (Nombre "Sala 2: Barroco")
+        (Contiene [Cuadro19]
+                  [Cuadro20]
+                  [Cuadro21]
+                  [Cuadro22]
+                  [Cuadro24]
+                  [Cuadro25]
+                  [Cuadro26]
+                  [Cuadro27]
+                  [Cuadro28]
+                  [Cuadro29]
+                  [Cuadro30]
+                  [Cuadro31]
+                  [Cuadro32]
+                  [Cuadro33]
+                  [Cuadro34]
+                  [Cuadro35]
+                  [Cuadro36]
+                  [Cuadro37]
+                  [Cuadro38]
+                  [Cuadro39]
+                  [Cuadro40]
+                  [Cuadro41]
+                  [Cuadro42]
+        )
+    )
     
     ([SalaRococo] of Sala
-        (Nombre "Sala 3: Rococo"))
+        (Nombre "Sala 3: Rococo")
+        (Contiene [Cuadro43]
+                  [Cuadro44]
+                  [Cuadro45]
+                  [Cuadro46]
+                  [Cuadro47]
+                  [Cuadro48]
+                  [Cuadro49]
+                  [Cuadro50]
+        )    
+    )
 
     ([SalaNeoclasicismo] of Sala
-        (Nombre "Sala 4: Neoclasicismo"))
+        (Nombre "Sala 4: Neoclasicismo")
+        (Contiene [Cuadro51]
+                  [Cuadro53]
+                  [Cuadro54]
+                  [Cuadro56]
+                  [Cuadro58]
+                  [Cuadro59]
+                  [Cuadro60]
+                  [Cuadro64]
+        )
+    )
 
     ([SalaRomanticismo] of Sala
-        (Nombre "Sala 5: Romanticismo"))
+        (Nombre "Sala 5: Romanticismo")
+        (Contiene [Cuadro52]
+                  [Cuadro55]
+                  [Cuadro57]
+                  [Cuadro61]
+                  [Cuadro62]
+                  [Cuadro63]
+                  [Cuadro65]
+                  [Cuadro66]
+                  [Cuadro67]
+                  [Cuadro68]
+                  [Cuadro71]
+                  [Cuadro72]
+                  [Cuadro74]
+                  [Cuadro76]
+                  [Cuadro77]
+                  [Cuadro79]
+                  [Cuadro80]
+                  [Cuadro82]
+                  [Cuadro96]       
+        )
+    )
 
     ([SalaImpresionismo] of Sala
-        (Nombre "Sala 6: Impresionismo"))
+        (Nombre "Sala 6: Impresionismo")
+        (Contiene [Cuadro73]
+                  [Cuadro75]
+                  [Cuadro78]
+                  [Cuadro93]            
+        )
+    )
 
     ([SalaPosimpresionismo] of Sala
-        (Nombre "Sala 7: Posimpresionismo"))
+        (Nombre "Sala 7: Posimpresionismo")
+        (Contiene [Cuadro81]
+                  [Cuadro83]
+                  [Cuadro84]
+                  [Cuadro85]
+                  [Cuadro86]
+                  [Cuadro87]
+                  [Cuadro88]
+                  [Cuadro89]
+                  [Cuadro90]
+                  [Cuadro92]
+        )
+    )
 
     ([SalaVictoriana] of Sala
-        (Nombre "Sala 8: Victoriana"))
+        (Nombre "Sala 8: Victoriana")
+        (Contiene [Cuadro69]
+                  [Cuadro70]
+                  [Cuadro91]
+                  [Cuadro94]
+                  [Cuadro95]
+        )
+    )
 )
 
 (definstances Cuadros
@@ -1103,7 +1258,7 @@
         (Epoca "Posimpresionismo")
         (Estilo "Puntillismo")
         (Tematica "Escena costumbrista")
-        (Dimensiones "207,5 x 308")
+        (Dimensiones "207 x 308")
         (Complejidad 0)
         (Relevancia 1)
         (Ubicado_en [SalaPosimpresionismo])
@@ -1271,7 +1426,7 @@
         (Epoca "Victoriana")
         (Estilo "Pre-Rafaelista/Simbolista")
         (Tematica "Escena dramatica")
-        (Dimensiones "137,2 x 188")
+        (Dimensiones "133 x 188")
         (Complejidad 0)
         (Relevancia 3)
         (Ubicado_en [SalaVictoriana])
