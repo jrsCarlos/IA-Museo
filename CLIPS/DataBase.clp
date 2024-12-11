@@ -100,7 +100,7 @@
     (multislot Preferencias
         (type STRING)
         (create-accessor read-write))
-    (slot Realiza
+    (slot Realiza   ; Relacion con Itinerario
         (type INSTANCE)
         (create-accessor read-write))
 )
@@ -114,9 +114,6 @@
     (role concrete)
     (pattern-match reactive)
     (slot DiasDeVisita
-        (type INTEGER)
-        (create-accessor read-write))
-    (slot HorasDeVisitaMax
         (type INTEGER)
         (create-accessor read-write))
     (multislot Compuesto_de ; Relacion con Visita. Se relaiza una visita por dia
@@ -133,6 +130,9 @@
         (create-accessor read-write))
     (multislot Se_realizan       ;Relacion con Observacion
         (type INSTANCE)
+        (create-accessor read-write))
+    (slot Tiempo
+        (type INTEGER)
         (create-accessor read-write))
 )
 

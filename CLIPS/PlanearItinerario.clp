@@ -111,36 +111,67 @@
     ?grupo <- (datos-grupo)
     =>
     (bind ?observaciones (find-all-instances ((?inst Observacion)) TRUE))
-    (bind ?horas-max (fact-slot-value ?grupo horas))
+    (bind ?tiempo-max (* (fact-slot-value ?grupo horas) 60)) ; Tiempo maximo en minutos
 
-    (bind ?horas-ocupadas 0)
-    (bind ?salas-visitadas (create$))
     (bind ?numDias (fact-slot-value ?grupo dias))
 
+    (bind ?tiempos-ocupados (create$))
     (bind ?particiones (create$))
-    (bind ?particion (create$))
+    (bind ?salas (create$))
 
     (bind ?idx 1)
-    (bind ?observacion (nth$ ?idx ?observaciones))
-    (bind ?tiempo (send ?observacion get-Tiempo))
-    (while (<= (+ ?horas-ocupadas ?tiempo) ?horas-max) do
-        ; Actulizamos las horas ocupadas
-        (bind ?horas-ocupadas (+ ?horas-ocupadas ?tiempo))
+    (loop-for-count (?i ?numDias) do
+        ; Reiniciamos las variables
+        (bind ?particion (create$))
+        (bind ?tiempo-ocupado 0)
+        (bind ?salas-visitadas (create$))
 
-        ; Guardamos la sala visitada (solo si no la hemos visitado ya)
-        (bind ?cuadro (send ?observacion get-Cuadro))
-        (bind ?sala (send ?cuadro get-Sala))
-        (if (not (member$ ?sala ?salas-visitadas)) then
-            (bind ?salas-visitadas (create$ ?salas-visitadas ?sala))
-        )
 
-        ; Anadimos la observacion a la particion
-        (bind ?particion (create$ ?particion ?observacion))
-        (bind ?idx (+ ?idx 1))
-
-        (if)
         (bind ?observacion (nth$ ?idx ?observaciones))
         (bind ?tiempo (send ?observacion get-Tiempo))
+        (while (and (<= (+ ?tiempo-ocupado ?tiempo) ?tiempo-max) (<= ?idx (length$ ?observaciones)))  do
+            ; Actulizamos las horas ocupadas
+            (bind ?tiempo-ocupado (+ ?tiempo-ocupado ?tiempo))
+
+            ; Guardamos la sala visitada (solo si no la hemos visitado ya)
+            (bind ?cuadro (send ?observacion get-Cuadro))
+            (bind ?sala (send (send ?cuadro get-Ubicado_en) get-Nombre))
+            (if (not (member$ ?sala ?salas-visitadas)) then
+                (bind ?salas-visitadas (create$ ?salas-visitadas ?sala))
+            )
+
+            ; Anadimos la observacion a la particion
+            (bind ?particion (create$ ?particion ?observacion))
+            (bind ?idx (+ ?idx 1))
+
+            (bind ?observacion (nth$ ?idx ?observaciones))
+            (bind ?tiempo (send ?observacion get-Tiempo))
+        )
+        (bind ?tiempos-ocupados (create$ ?tiempos-ocupados ?tiempo-ocupado))
+        (bind ?salas (create$ ?salas ?salas-visitadas))
+        (bind ?particiones (create$ ?particiones ?particion))
     )
-    (bind ?particiones (create$ ?particiones ?particion))
+
+    (loop-for-count (?i (length$ ?particiones)) do
+        (bind ?particion (nth$ ?i ?particiones))
+        (bind ?salas-visita (nth$ ?i ?salas))
+        (bind ?tiempo (nth$ ?i ?tiempos-ocupados))
+
+        (make-instance (gensym) of Visita
+            (Realizada_en ?salas-visita)
+            (Se_realizan ?particion)
+            (Tiempo ?tiempo)
+        )
+    )
+)
+
+(defrule planear-itinerario
+    ?grupo <- (datos-grupo)
+    =>
+    (bind ?visitas (find-all-instances ((?inst Visita)) TRUE))
+    (bind ?dias (fact-slot-value ?grupo dias))
+    (make-instance ItinerarioMuseo of Itinerario
+        (Dias ?dias)
+        (Visitas ?visitas)
+    )
 )

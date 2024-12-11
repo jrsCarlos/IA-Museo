@@ -49,11 +49,21 @@
                                (fact-slot-value ?preferencias estilos)
                                (fact-slot-value ?preferencias epocas))
         )
-        (Realiza [ItinerarioMuseo])
+        (Realiza nil)
     )
     
     (focus PlanearItinerario)
 )
+
+(defrule imprimir-itinerario
+    =>
+    (bind ?itine (find-all-instances ((?inst Itinerario)) TRUE))
+    (bind ?visitante (find-all-instances ((?inst Visitante)) TRUE))
+
+    
+)
+
+
 
 (deffunction MAIN::imprimir-recomendacion
     ()
