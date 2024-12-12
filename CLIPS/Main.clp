@@ -57,54 +57,62 @@
 
 (defrule imprimir-itinerario
     =>
-    (bind ?itinerario (find-all-instances ((?inst Itinerario)) TRUE))
-    (bind ?visitante (find-all-instances ((?inst Visitante)) TRUE))
+    (printout t "=============================================================================" crlf)
+    (printout t "                             DATOS DEL VISITANTE                             " crlf)
+    (printout t "=============================================================================" crlf)
 
-    
-)
+    (printout t crlf)
+    (printout t "Nombre: " (send [Usuario] get-Nombre) crlf)
+    (printout t "Tipo de visitante: " (send [Usuario] get-Tipo) crlf)
+    (printout t "Preferencias: " (send [Usuario] get-Preferencias) crlf)
+    (printout t crlf)
+
+    (printout t "=============================================================================" crlf)
+    (printout t "                          ITINERARIO PERSONALIZADO                           " crlf)
+    (printout t "=============================================================================" crlf)
+
+    (bind ?dias (send [ItinerarioMuseo] get-DiasDeVisita))
+
+    (printout t crlf)
+    (printout t "Días de visita: " ?dias crlf)
+    (printout t crlf)
+
+    (bind ?visitas (send [ItinerarioMuseo] get-Compuesto_de))
+    (bind ?i 1)
+
+    (foreach ?visita ?visitas
+        (printout t crlf)
+        (printout t "____________________________________DIA-" ?i "____________________________________" crlf)
+        (printout t crlf)
+
+        (printout t "Salas a visitar: " (send ?visita get-Realizada_en) crlf)
+        (printout t "Tiempo estimado de la visita: " (round (send ?visita get-Tiempo)) " minutos" crlf)
+        (printout t crlf)
+
+        (printout t "                      ========== CUADROS A VISITAR ==========                     " crlf)
+        (printout t crlf)
+
+        (bind ?observaciones (send ?visita get-Se_realizan))
+        (bind ?idx-cuadro 1)
+
+        (foreach ?obs ?observaciones
+            (bind ?cuadro (send ?obs get-Cuadro))
+            (bind ?tiempo (send ?obs get-Tiempo))
+
+            (printout t "Cuadro-" ?idx-cuadro ":" crlf)
+            (printout t " -Titulo: " (send ?cuadro get-Titulo) crlf)
+            (printout t " -Autor: " (send (send ?cuadro get-Pintado_por) get-Nombre) crlf)
+            (printout t " -Año de creación: " (send ?cuadro get-AnyCreacion) crlf)
+            (printout t " -Estilo: " (send ?cuadro get-Estilo) crlf)
+            (printout t " -Epoca: " (send ?cuadro get-Epoca) crlf)
+            (printout t " -Tematica: " (send ?cuadro get-Tematica) crlf)
+            (printout t " -Dimensiones: " (send ?cuadro get-Dimensiones) crlf)
+            (printout t " -Tiempo estimado de observación: " (round ?tiempo) " minutos" crlf)
+            (printout t crlf)
 
 
-
-(deffunction MAIN::imprimir-recomendacion
-    ()
-    (printout t "Recomendacion" crlf)
-    
-    (foreach ?pref (find-all-facts ((?f preferencias-grupo)) TRUE)
-        (bind ?epocas (fact-slot-value ?pref epocas) crlf)
-        (foreach ?epoca ?epocas
-            (if (stringp ?epoca) then (printout t "Epoca: " ?epoca crlf))
-            (bind ?obras (find-all-instances ((?inst Cuadro)) (eq ?inst:Epoca ?epoca)))
-            (foreach ?o ?obras
-                (printout t "   " (send ?o get-Titulo) crlf)
-            )
+            (bind ?idx-cuadro (+ ?idx-cuadro 1))
         )
+        (bind ?i (+ ?i 1))
     )
-)
-
-; Imprimimos la información recolectada del usuario
-(defrule MAIN::imprimir-datos-recolectados
-    =>
-    (printout t "----------------------------------------------------------" crlf)
-    (printout t "             Resumen de los datos recolectados            " crlf)
-    (printout t "----------------------------------------------------------" crlf)
-
-    ;; Datos del grupo
-    (foreach ?dato (find-all-facts ((?f datos-grupo)) TRUE)
-        (printout t "Nombre: "                 (fact-slot-value ?dato nombre) crlf)
-        (printout t "Tipo de visitante: "      (fact-slot-value ?dato tipo) crlf)
-        (printout t "Conocimiento artístico: " (fact-slot-value ?dato conocimiento) "/5" crlf)
-        (printout t "Días de Visita: "         (fact-slot-value ?dato dias) crlf)
-        (printout t "Horas máximas por día: "  (fact-slot-value ?dato horas) crlf)
-    )
-
-    ;; Preferencias del grupo
-    (foreach ?pref (find-all-facts ((?f preferencias-grupo)) TRUE)
-        (printout t "Autores favoritos: "   (fact-slot-value ?pref pintores) crlf)
-        (printout t "Temáticas favoritas: " (fact-slot-value ?pref tematicas) crlf)
-        (printout t "Estilos favoritos: "   (fact-slot-value ?pref estilos) crlf)
-        (printout t "Épocas favoritas: "    (fact-slot-value ?pref epocas) crlf)
-    )
-
-    (printout t "----------------------------------------------------------" crlf)
-    (imprimir-recomendacion)
 )
