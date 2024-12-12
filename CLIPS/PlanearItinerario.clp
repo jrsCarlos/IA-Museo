@@ -49,7 +49,7 @@
 )
 
 ; Calculamos el tiempo por cuadro
-(defrule calcular-tiempo
+(defrule calcular-tiempo-por-cuadro
     (cuadros-recomendados $?cuadros)
     ?grupo <- (datos-grupo)
     =>
@@ -112,12 +112,7 @@
     =>
     (bind ?observaciones (find-all-instances ((?inst Observacion)) TRUE))
     (bind ?tiempo-max (* (fact-slot-value ?grupo horas) 60)) ; Tiempo maximo en minutos
-
     (bind ?numDias (fact-slot-value ?grupo dias))
-
-    (bind ?tiempos-ocupados (create$))
-    (bind ?particiones (create$))
-    (bind ?salas (create$))
 
     (bind ?idx 1)
     (loop-for-count (?i ?numDias) do
@@ -147,31 +142,28 @@
             (bind ?observacion (nth$ ?idx ?observaciones))
             (bind ?tiempo (send ?observacion get-Tiempo))
         )
-        (bind ?tiempos-ocupados (create$ ?tiempos-ocupados ?tiempo-ocupado))
-        (bind ?salas (create$ ?salas ?salas-visitadas))
-        (bind ?particiones (create$ ?particiones ?particion))
-    )
 
-    (loop-for-count (?i (length$ ?particiones)) do
-        (bind ?particion (nth$ ?i ?particiones))
-        (bind ?salas-visita (nth$ ?i ?salas))
-        (bind ?tiempo (nth$ ?i ?tiempos-ocupados))
-
+        ; Creamos una instancia de Visita por dia
         (make-instance (gensym) of Visita
-            (Realizada_en ?salas-visita)
+            (Realizada_en ?salas-visitadas)
             (Se_realizan ?particion)
-            (Tiempo ?tiempo)
+            (Tiempo ?tiempo-ocupado)
         )
     )
 )
 
-(defrule planear-itinerario
+(defrule assignar-itinerario
     ?grupo <- (datos-grupo)
     =>
+    ; Creamor la instancia de itinerario
     (bind ?visitas (find-all-instances ((?inst Visita)) TRUE))
     (bind ?dias (fact-slot-value ?grupo dias))
+
     (make-instance ItinerarioMuseo of Itinerario
-        (Dias ?dias)
-        (Visitas ?visitas)
+        (DiasDeVisita ?dias)
+        (Compuesto_de ?visitas)
     )
+
+    ; Asignamos el itinerario al grupo
+    (send [Usuario] put-Realiza ItinerarioMuseo)
 )
