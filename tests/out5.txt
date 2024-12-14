@@ -1,0 +1,959 @@
+         CLIPS (6.30 3/17/15)
+CLIPS> CLIPS> (clear)
+Defining defmodule: DataBase
+Defining defclass: Sala
+Defining defclass: Cuadro
+Defining defclass: Pintor
+Defining defclass: Visitante
+Defining defclass: Itinerario
+Defining defclass: Visita
+Defining defclass: Observacion
+Defining definstances: Salas
+Defining definstances: Cuadros
+Defining definstances: Pintores
+TRUE
+CLIPS> (load DataBase.clp)
+Defining defmodule: Templates
+Defining deftemplate: datos-grupo
+Defining deftemplate: preferencias-grupo
+Defining deftemplate: estado
+TRUE
+CLIPS> (load Templates.clp)
+Defining defmodule: TipoPregunta
+Defining deffunction: pregunta-multiseleccion
+Defining deffunction: pregunta-numerica
+Defining deffunction: eliminar-repetidos$
+Defining deffunction: derivar-complejidad
+TRUE
+CLIPS> (load TipoPregunta.clp)
+Defining defmodule: PreguntasUsuario
+Defining defrule: preguntar-nombre +j+j+j
+Defining defrule: preguntar-tipo +j+j+j
+Defining defrule: preguntar-dias +j+j+j
+Defining defrule: preguntar-horas +j+j+j
+Defining defrule: preguntar-conocimiento +j+j+j
+Defining defrule: preguntar-pintor-favorito +j+j+j
+Defining defrule: pregunta-tematica-favorita +j+j+j
+Defining defrule: pregunta-estilo-favorito +j+j+j
+Defining defrule: pregunta-epoca-favorita +j+j+j
+TRUE
+CLIPS> (load PreguntasUsuario.clp)
+Defining defmodule: PlanearItinerario
+Defining defrule: filtrar-cuadros +j+j
+Defining defrule: derivar-complejidad +j+j
+Defining defrule: calcular-tiempo-por-cuadro +j+j+j
+Defining defrule: repartir-obervaciones +j+j
+Defining defrule: assignar-itinerario =j+j
+TRUE
+CLIPS> (load PlanearItinerario.clp)
+
+[CSTRCPSR1] WARNING: Redefining defmodule: MAIN
+Defining defrule: Inicio +j+j
+Defining defrule: GenerarRecorrido =j+j+j
+Defining defrule: imprimir-itinerario +j
+TRUE
+CLIPS> (load Main.clp)
+CLIPS> (reset)
+
+-------------------------------------------------------------------------------
+                                  ¡Bienvenid@!                                 
+A continuación se le formularán una serie de preguntas sus datos y preferencias
+     artísticas para poder organizarle una visita guiada por nuestro museo     
+-------------------------------------------------------------------------------
+
+Introduzca su nombre: 
+(run)
+
+Selecciona el tamaño del grupo de visitantes:
+1. Una persona
+2. Una familia
+3. Un grupo pequeño (2-5 personas)
+4. Un grupo grande (>5 personas)
+Ingresa un número del 1 al 4
+
+¿Cuántos días durará su visita al Museo?
+Ingresa un número del 1 al 7
+
+¿Cuántas horas, como máximo, deseas visitar el museo por día?
+Ingresa un número del 1 al 8
+
+Por útimo, responda las siguientes preguntas:
+A) ¿Quién pintó 'La Última Cena'?
+   1. Leonardo da Vinci
+   2. Pablo Picasso
+   3. Vincent van Gogh
+   4. Claude Monet
+Ingresa un número del 1 al 4
+
+B) ¿En qué periodo tuvo lugar el Renacimiento?
+   1. Siglo XIII
+   2. Siglo XIV al XVI
+   3. Siglo XVII
+   4. Siglo XVIII
+Ingresa un número del 1 al 4
+
+C) ¿Qué características definen al arte barroco?
+   1. Simetría y simplicidad
+   2. Uso dramático de la luz y el movimiento
+   3. Representaciones abstractas
+   4. Colores pastel y escenas idílicas
+Ingresa un número del 1 al 4
+
+D) ¿Qué obra pintó Vincent van Gogh?
+   1. Las Meninas
+   2. La noche estrellada
+   3. El grito
+   4. La Gioconda
+Ingresa un número del 1 al 4
+
+E) ¿Qué pintor es famoso por sus retratos de la corte española del siglo XVII?
+   1. Diego Velázquez
+   2. Sandro Botticelli
+   3. Rafael Sanzio
+   4. Pieter Bruegel el Viejo
+Ingresa un número del 1 al 4
+
+Gracias por responder!
+
+Selecciona tus pintores favoritos de la lista.
+   1. Aelbrecht Bouts
+   2. Alexandre Cabanel
+   3. Artemisia Gentileschi
+   4. Auguste Toulmouche
+   5. Bartolome Esteban Murillo
+   6. Caravaggio
+   7. Claude Lorrain
+   8. Claude Monet
+   9. Diego Velazquez
+   10. Edmund Blair Leighton
+   11. El Greco
+   12. Elisabeth Vigee-LeBrun
+   13. Francesco Hayez
+   14. Francisco de Goya
+   15. Frank Cadogan Cowper
+   16. Frank Dicksee
+   17. Frederic Leighton
+   18. Georges Seurat
+   19. Giovanni Antonio Canal (Canaletto)
+   20. Guido Reni
+   21. Henry Fuseli
+   22. Hieronymus Bosch (El Bosco)
+   23. Hugo van der Goes
+   24. Hyacinthe Rigaud
+   25. Jacob Jordaens
+   26. Jacques-Louis David
+   27. Jan Matejko
+   28. Jan van Eyck
+   29. Jean-Auguste-Dominique Ingres
+   30. Jean-Honore Fragonard
+   31. Johannes Vermeer
+   32. John Everett Millais
+   33. Lawrence Alma-Tadema
+   34. Leonardo da Vinci
+   35. Louis-Michel Van Loo
+   36. Mariano Fortuny
+   37. Marten Eskil Winge
+   38. Miguel Angel Buonarroti
+   39. Nicolas Poussin
+   40. Paul Cezanne
+   41. Paul Delaroche
+   42. Peter Paul Rubens
+   43. Piero della Francesca
+   44. Pierre Auguste Cot
+   45. Pierre Subleyras
+   46. Pieter Bruegel el Viejo
+   47. Rafael Sanzio
+   48. Rembrandt van Rijn
+   49. Sandro Botticelli
+   50. Theodore Gericault
+   51. Thomas Gainsborough
+   52. Tiziano Vecellio
+   53. Vincent van Gogh
+   54. William Hogarth
+   55. William-Adolphe Bouguereau
+Introduce los números de tus pintores preferidos, separados por espacios
+
+Selecciona tus temáticas favoritas de la lista.
+   1. Retrato masculino
+   2. Retrato doble
+   3. Escena religiosa
+   4. Escena mitologica
+   5. Escena alegorica
+   6. Escena biblica
+   7. Retrato femenino
+   8. Escena historica
+   9. Escena musical
+   10. Paisaje rural
+   11. Retrato grupal
+   12. Escena filosofica
+   13. Escena de genero
+   14. Retrato real
+   15. Paisaje urbano
+   16. Escena galante
+   17. Escena intima
+   18. Escena dramatica
+   19. Retrato individual
+   20. Escena literaria
+   21. Escena romantica
+   22. Escena costumbrista
+   23. Retrato familiar
+   24. Naturaleza
+Introduce los números de tus temáticas preferidas, separados por espacios
+
+Selecciona tus estilos favoritos de la lista
+   1. Primitivismo flamenco
+   2. Renacimiento
+   3. Cinquecento
+   4. Escuela Veneciana
+   5. Barroco
+   6. Tenebrismo, Barroco
+   7. Manierismo
+   8. Clasicismo frances
+   9. Vedutismo, Rococo
+   10. Vedutismo
+   11. Rococo
+   12. Neoclasicismo frances
+   13. Romanticismo
+   14. Neoclasicismo
+   15. Romanticismo, Pintura oscura
+   16. Neoclasico
+   17. Pinturas negras
+   18. Pinturas Negras, Romanticismo
+   19. Academico, con influencias romanticas
+   20. Academicismo frances
+   21. Prerrafaelismo
+   22. Pre-Rafaelismo
+   23. Academicismo
+   24. Orientalismo y costumbrismo
+   25. Impresionismo
+   26. Prerrafaelismo y academicismo
+   27. Puntillismo
+   28. Pintura academica con tematica clasica
+   29. Posimpresionismo
+   30. Academico
+   31. Realismo academico
+   32. Pre-Rafaelista/Simbolista
+Introduce los números de tus estilos preferidos, separados por espacios
+
+Selecciona tus épocas favoritas de la lista.
+   1. Renacimiento
+   2. Barroco
+   3. Rococo
+   4. Neoclasicismo
+   5. Romanticismo
+   6. Victoriana
+   7. Impresionismo
+   8. Posimpresionismo
+Introduce los números de tus épocas preferidas, separados por espacios
+
+=============================================================================
+                             DATOS DEL VISITANTE                             
+=============================================================================
+
+Nombre: Familia_Inculta
+Tipo de visitante: Persona
+Preferencias: ("Auguste Toulmouche" "Hugo van der Goes" "Jacob Jordaens" "Paul Delaroche" "Escena biblica" "Escena musical" "Paisaje rural" "Escena romantica" "Primitivismo flamenco" "Academico, con influencias romanticas" "Pintura academica con tematica clasica" "Posimpresionismo" "Renacimiento" "Barroco" "Neoclasicismo" "Posimpresionismo")
+
+=============================================================================
+                          ITINERARIO PERSONALIZADO                           
+=============================================================================
+
+Días de visita: 2
+
+
+____________________________________DIA-1____________________________________
+
+Salas a visitar: ("Sala 1: Renacimiento" "Sala 2: Barroco")
+Tiempo estimado de la visita: 240 minutos
+
+                      ========== CUADROS A VISITAR ==========                     
+
+Cuadro-1:
+ -Titulo: Retrato de un hombre con turbante rojo
+ -Autor: Jan van Eyck
+ -Año de creación: 1433
+ -Estilo: Primitivismo flamenco
+ -Epoca: Renacimiento
+ -Tematica: Retrato masculino
+ -Dimensiones: 25 x 19
+ -Tiempo estimado de observación: 1 minutos
+
+Cuadro-2:
+ -Titulo: El matrimonio Arnolfini
+ -Autor: Jan van Eyck
+ -Año de creación: 1434
+ -Estilo: Primitivismo flamenco
+ -Epoca: Renacimiento
+ -Tematica: Retrato doble
+ -Dimensiones: 82 x 60
+ -Tiempo estimado de observación: 4 minutos
+
+Cuadro-3:
+ -Titulo: La flagelacion de Cristo
+ -Autor: Piero della Francesca
+ -Año de creación: 1460
+ -Estilo: Renacimiento
+ -Epoca: Renacimiento
+ -Tematica: Escena religiosa
+ -Dimensiones: 58 x 81
+ -Tiempo estimado de observación: 8 minutos
+
+Cuadro-4:
+ -Titulo: La Primavera
+ -Autor: Sandro Botticelli
+ -Año de creación: 1481
+ -Estilo: Renacimiento
+ -Epoca: Renacimiento
+ -Tematica: Escena mitologica
+ -Dimensiones: 203 x 314
+ -Tiempo estimado de observación: 13 minutos
+
+Cuadro-5:
+ -Titulo: Virgen de las Rocas
+ -Autor: Leonardo da Vinci
+ -Año de creación: 1483
+ -Estilo: Renacimiento
+ -Epoca: Renacimiento
+ -Tematica: Escena religiosa
+ -Dimensiones: 199 x 122
+ -Tiempo estimado de observación: 5 minutos
+
+Cuadro-6:
+ -Titulo: Venus y Marte
+ -Autor: Sandro Botticelli
+ -Año de creación: 1483
+ -Estilo: Renacimiento
+ -Epoca: Renacimiento
+ -Tematica: Escena mitologica
+ -Dimensiones: 69 x 173
+ -Tiempo estimado de observación: 4 minutos
+
+Cuadro-7:
+ -Titulo: El nacimiento de Venus
+ -Autor: Sandro Botticelli
+ -Año de creación: 1485
+ -Estilo: Renacimiento
+ -Epoca: Renacimiento
+ -Tematica: Escena mitologica
+ -Dimensiones: 172 x 278
+ -Tiempo estimado de observación: 12 minutos
+
+Cuadro-8:
+ -Titulo: El jardin de las delicias
+ -Autor: Hieronymus Bosch (El Bosco)
+ -Año de creación: 1495
+ -Estilo: Primitivismo flamenco
+ -Epoca: Renacimiento
+ -Tematica: Escena alegorica
+ -Dimensiones: 220 x 389
+ -Tiempo estimado de observación: 10 minutos
+
+Cuadro-9:
+ -Titulo: La ultima cena
+ -Autor: Leonardo da Vinci
+ -Año de creación: 1496
+ -Estilo: Renacimiento
+ -Epoca: Renacimiento
+ -Tematica: Escena biblica
+ -Dimensiones: 460 x 880
+ -Tiempo estimado de observación: 15 minutos
+
+Cuadro-10:
+ -Titulo: Sagrado Semblante
+ -Autor: Aelbrecht Bouts
+ -Año de creación: 1500
+ -Estilo: Renacimiento
+ -Epoca: Renacimiento
+ -Tematica: Escena religiosa
+ -Dimensiones: 37 x 28
+ -Tiempo estimado de observación: 2 minutos
+
+Cuadro-11:
+ -Titulo: Mona Lisa
+ -Autor: Leonardo da Vinci
+ -Año de creación: 1503
+ -Estilo: Renacimiento
+ -Epoca: Renacimiento
+ -Tematica: Retrato femenino
+ -Dimensiones: 77 x 53
+ -Tiempo estimado de observación: 9 minutos
+
+Cuadro-12:
+ -Titulo: La escuela de Atenas
+ -Autor: Rafael Sanzio
+ -Año de creación: 1510
+ -Estilo: Renacimiento
+ -Epoca: Renacimiento
+ -Tematica: Escena historica
+ -Dimensiones: 500 x 770
+ -Tiempo estimado de observación: 15 minutos
+
+Cuadro-13:
+ -Titulo: Creacion de los astros y las plantas
+ -Autor: Miguel Angel Buonarroti
+ -Año de creación: 1511
+ -Estilo: Renacimiento
+ -Epoca: Renacimiento
+ -Tematica: Escena biblica
+ -Dimensiones: 280 x 570
+ -Tiempo estimado de observación: 3 minutos
+
+Cuadro-14:
+ -Titulo: La creacion de Adan
+ -Autor: Miguel Angel Buonarroti
+ -Año de creación: 1512
+ -Estilo: Renacimiento
+ -Epoca: Renacimiento
+ -Tematica: Escena biblica
+ -Dimensiones: 280 x 570
+ -Tiempo estimado de observación: 11 minutos
+
+Cuadro-15:
+ -Titulo: Expulsion del Paraiso
+ -Autor: Miguel Angel Buonarroti
+ -Año de creación: 1512
+ -Estilo: Cinquecento
+ -Epoca: Renacimiento
+ -Tematica: Escena biblica
+ -Dimensiones: 280 x 570
+ -Tiempo estimado de observación: 3 minutos
+
+Cuadro-16:
+ -Titulo: La Asuncion de la Virgen
+ -Autor: Tiziano Vecellio
+ -Año de creación: 1517
+ -Estilo: Escuela Veneciana
+ -Epoca: Renacimiento
+ -Tematica: Escena religiosa
+ -Dimensiones: 690 x 360
+ -Tiempo estimado de observación: 3 minutos
+
+Cuadro-17:
+ -Titulo: Epifania
+ -Autor: Hugo van der Goes
+ -Año de creación: 1520
+ -Estilo: Renacimiento
+ -Epoca: Renacimiento
+ -Tematica: Escena religiosa
+ -Dimensiones: 89 x 184
+ -Tiempo estimado de observación: 2 minutos
+
+Cuadro-18:
+ -Titulo: La Torre de Babel
+ -Autor: Pieter Bruegel el Viejo
+ -Año de creación: 1563
+ -Estilo: Primitivismo flamenco
+ -Epoca: Renacimiento
+ -Tematica: Escena biblica
+ -Dimensiones: 114 x 155
+ -Tiempo estimado de observación: 9 minutos
+
+Cuadro-19:
+ -Titulo: Cristo cargando la cruz
+ -Autor: El Greco
+ -Año de creación: 1603
+ -Estilo: Manierismo
+ -Epoca: Renacimiento
+ -Tematica: Escena biblica
+ -Dimensiones: 108 x 78
+ -Tiempo estimado de observación: 8 minutos
+
+Cuadro-20:
+ -Titulo: Baco adolescente
+ -Autor: Caravaggio
+ -Año de creación: 1593
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Escena mitologica
+ -Dimensiones: 95 x 85
+ -Tiempo estimado de observación: 4 minutos
+
+Cuadro-21:
+ -Titulo: Apolo tocando el laud
+ -Autor: Caravaggio
+ -Año de creación: 1596
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Escena musical
+ -Dimensiones: 94 x 119
+ -Tiempo estimado de observación: 2 minutos
+
+Cuadro-22:
+ -Titulo: Leda y el cisne
+ -Autor: Peter Paul Rubens
+ -Año de creación: 1600
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Escena mitologica
+ -Dimensiones: 64 x 80
+ -Tiempo estimado de observación: 6 minutos
+
+Cuadro-23:
+ -Titulo: La incredulidad de Santo Tomas
+ -Autor: Caravaggio
+ -Año de creación: 1602
+ -Estilo: Tenebrismo, Barroco
+ -Epoca: Barroco
+ -Tematica: Escena religiosa
+ -Dimensiones: 107 x 146
+ -Tiempo estimado de observación: 7 minutos
+
+Cuadro-24:
+ -Titulo: David con la cabeza de Goliat
+ -Autor: Caravaggio
+ -Año de creación: 1610
+ -Estilo: Tenebrismo, Barroco
+ -Epoca: Barroco
+ -Tematica: Escena biblica
+ -Dimensiones: 125 x 100
+ -Tiempo estimado de observación: 6 minutos
+
+Cuadro-25:
+ -Titulo: Judith decapitando a Holofern
+ -Autor: Artemisia Gentileschi
+ -Año de creación: 1613
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Escena biblica
+ -Dimensiones: 158 x 125
+ -Tiempo estimado de observación: 9 minutos
+
+Cuadro-26:
+ -Titulo: Dos satiros
+ -Autor: Peter Paul Rubens
+ -Año de creación: 1619
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Escena mitologica
+ -Dimensiones: 76 x 61
+ -Tiempo estimado de observación: 8 minutos
+
+Cuadro-27:
+ -Titulo: Retrato de Gongora
+ -Autor: Diego Velazquez
+ -Año de creación: 1622
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Retrato masculino
+ -Dimensiones: 59 x 46
+ -Tiempo estimado de observación: 7 minutos
+
+Cuadro-28:
+ -Titulo: La fragua de Vulcano
+ -Autor: Diego Velazquez
+ -Año de creación: 1630
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Escena mitologica
+ -Dimensiones: 223 x 290
+ -Tiempo estimado de observación: 8 minutos
+
+Cuadro-29:
+ -Titulo: La rendicion de Breda
+ -Autor: Diego Velazquez
+ -Año de creación: 1635
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Escena historica
+ -Dimensiones: 307 x 367
+ -Tiempo estimado de observación: 5 minutos
+
+Cuadro-30:
+ -Titulo: Paisaje con Ruinas
+ -Autor: Claude Lorrain
+ -Año de creación: 1635
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Paisaje rural
+ -Dimensiones: 100 x 135
+ -Tiempo estimado de observación: 2 minutos
+
+Cuadro-31:
+ -Titulo: Las Lanzas (La Rendicion de Breda)
+ -Autor: Diego Velazquez
+ -Año de creación: 1635
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Escena historica
+ -Dimensiones: 307 x 367
+ -Tiempo estimado de observación: 13 minutos
+
+Cuadro-32:
+ -Titulo: San Miguel
+ -Autor: Guido Reni
+ -Año de creación: 1636
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Escena religiosa
+ -Dimensiones: 293 x 202
+ -Tiempo estimado de observación: 8 minutos
+
+Cuadro-33:
+ -Titulo: Las Bodas de Tetis y Peleo
+ -Autor: Jacob Jordaens
+ -Año de creación: 1637
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Escena mitologica
+ -Dimensiones: 181 x 288
+ -Tiempo estimado de observación: 12 minutos
+
+Cuadro-34:
+ -Titulo: Et in Arcadia ego
+ -Autor: Nicolas Poussin
+ -Año de creación: 1638
+ -Estilo: Clasicismo frances
+ -Epoca: Barroco
+ -Tematica: Escena alegorica
+ -Dimensiones: 87 x 120
+ -Tiempo estimado de observación: 6 minutos
+
+
+____________________________________DIA-2____________________________________
+
+Salas a visitar: ("Sala 2: Barroco" "Sala 4: Neoclasicismo" "Sala 5: Romanticismo" "Sala 6: Impresionismo" "Sala 7: Posimpresionismo")
+Tiempo estimado de la visita: 233 minutos
+
+                      ========== CUADROS A VISITAR ==========                     
+
+Cuadro-1:
+ -Titulo: El juicio de Paris
+ -Autor: Peter Paul Rubens
+ -Año de creación: 1638
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Escena mitologica
+ -Dimensiones: 99 x 381
+ -Tiempo estimado de observación: 12 minutos
+
+Cuadro-2:
+ -Titulo: Las tres Gracias
+ -Autor: Peter Paul Rubens
+ -Año de creación: 1639
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Escena mitologica
+ -Dimensiones: 221 x 181
+ -Tiempo estimado de observación: 12 minutos
+
+Cuadro-3:
+ -Titulo: La ronda de noche
+ -Autor: Rembrandt van Rijn
+ -Año de creación: 1642
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Retrato grupal
+ -Dimensiones: 379 x 453
+ -Tiempo estimado de observación: 8 minutos
+
+Cuadro-4:
+ -Titulo: Diogenes y la linterna
+ -Autor: Jacob Jordaens
+ -Año de creación: 1645
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Escena filosofica
+ -Dimensiones: 233 x 349
+ -Tiempo estimado de observación: 10 minutos
+
+Cuadro-5:
+ -Titulo: El joven mendigo
+ -Autor: Bartolome Esteban Murillo
+ -Año de creación: 1650
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Escena de genero
+ -Dimensiones: 134 x 100
+ -Tiempo estimado de observación: 2 minutos
+
+Cuadro-6:
+ -Titulo: Las meninas
+ -Autor: Diego Velazquez
+ -Año de creación: 1656
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Retrato grupal
+ -Dimensiones: 318 x 276
+ -Tiempo estimado de observación: 13 minutos
+
+Cuadro-7:
+ -Titulo: La joven de la perla
+ -Autor: Johannes Vermeer
+ -Año de creación: 1665
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Retrato femenino
+ -Dimensiones: 44 x 39
+ -Tiempo estimado de observación: 8 minutos
+
+Cuadro-8:
+ -Titulo: Retrato de Luis XIV
+ -Autor: Hyacinthe Rigaud
+ -Año de creación: 1701
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Retrato real
+ -Dimensiones: 277 x 194
+ -Tiempo estimado de observación: 7 minutos
+
+Cuadro-9:
+ -Titulo: Retrato de Madame Francois Buron
+ -Autor: Jacques-Louis David
+ -Año de creación: 1769
+ -Estilo: Neoclasicismo frances
+ -Epoca: Neoclasicismo
+ -Tematica: Retrato femenino
+ -Dimensiones: 63 x 52
+ -Tiempo estimado de observación: 6 minutos
+
+Cuadro-10:
+ -Titulo: El juramento de los Horacios
+ -Autor: Jacques-Louis David
+ -Año de creación: 1784
+ -Estilo: Neoclasicismo
+ -Epoca: Neoclasicismo
+ -Tematica: Escena historica
+ -Dimensiones: 330 x 425
+ -Tiempo estimado de observación: 8 minutos
+
+Cuadro-11:
+ -Titulo: La muerte de Socrates
+ -Autor: Jacques-Louis David
+ -Año de creación: 1787
+ -Estilo: Neoclasicismo frances
+ -Epoca: Neoclasicismo
+ -Tematica: Escena historica
+ -Dimensiones: 129 x 196
+ -Tiempo estimado de observación: 7 minutos
+
+Cuadro-12:
+ -Titulo: La banista
+ -Autor: Elisabeth Vigee-LeBrun
+ -Año de creación: 1792
+ -Estilo: Neoclasico
+ -Epoca: Neoclasicismo
+ -Tematica: Retrato femenino
+ -Dimensiones: 73 x 55
+ -Tiempo estimado de observación: 6 minutos
+
+Cuadro-13:
+ -Titulo: La maja desnuda
+ -Autor: Francisco de Goya
+ -Año de creación: 1797
+ -Estilo: Neoclasicismo
+ -Epoca: Neoclasicismo
+ -Tematica: Retrato femenino
+ -Dimensiones: 97 x 190
+ -Tiempo estimado de observación: 4 minutos
+
+Cuadro-14:
+ -Titulo: Napoleon cruzando los Alpes
+ -Autor: Jacques-Louis David
+ -Año de creación: 1801
+ -Estilo: Neoclasicismo
+ -Epoca: Neoclasicismo
+ -Tematica: Retrato individual
+ -Dimensiones: 261 x 221
+ -Tiempo estimado de observación: 5 minutos
+
+Cuadro-15:
+ -Titulo: Retrato de Madame Duvaucey
+ -Autor: Jean-Auguste-Dominique Ingres
+ -Año de creación: 1807
+ -Estilo: Neoclasicismo frances
+ -Epoca: Neoclasicismo
+ -Tematica: Retrato femenino
+ -Dimensiones: 108 x 87
+ -Tiempo estimado de observación: 4 minutos
+
+Cuadro-16:
+ -Titulo: La colera de Aquiles
+ -Autor: Jacques-Louis David
+ -Año de creación: 1819
+ -Estilo: Neoclasicismo
+ -Epoca: Neoclasicismo
+ -Tematica: Escena mitologica
+ -Dimensiones: 105 x 145
+ -Tiempo estimado de observación: 11 minutos
+
+Cuadro-17:
+ -Titulo: La ejecucion de Lady Jane Grey
+ -Autor: Paul Delaroche
+ -Año de creación: 1833
+ -Estilo: Romanticismo
+ -Epoca: Romanticismo
+ -Tematica: Escena historica
+ -Dimensiones: 246 x 297
+ -Tiempo estimado de observación: 10 minutos
+
+Cuadro-18:
+ -Titulo: El angel caido
+ -Autor: Alexandre Cabanel
+ -Año de creación: 1847
+ -Estilo: Academico, con influencias romanticas
+ -Epoca: Romanticismo
+ -Tematica: Escena biblica
+ -Dimensiones: 105 x 138
+ -Tiempo estimado de observación: 4 minutos
+
+Cuadro-19:
+ -Titulo: El beso
+ -Autor: Francesco Hayez
+ -Año de creación: 1859
+ -Estilo: Romanticismo
+ -Epoca: Romanticismo
+ -Tematica: Escena romantica
+ -Dimensiones: 112 x 88
+ -Tiempo estimado de observación: 4 minutos
+
+Cuadro-20:
+ -Titulo: Primavera
+ -Autor: Pierre Auguste Cot
+ -Año de creación: 1873
+ -Estilo: Academicismo frances
+ -Epoca: Romanticismo
+ -Tematica: Escena romantica
+ -Dimensiones: 213 x 127
+ -Tiempo estimado de observación: 5 minutos
+
+Cuadro-21:
+ -Titulo: Caballeria
+ -Autor: Frank Dicksee
+ -Año de creación: 1885
+ -Estilo: Prerrafaelismo y academicismo
+ -Epoca: Romanticismo
+ -Tematica: Escena romantica
+ -Dimensiones: 157 x 116
+ -Tiempo estimado de observación: 4 minutos
+
+Cuadro-22:
+ -Titulo: Las mujeres de Amfissa
+ -Autor: Lawrence Alma-Tadema
+ -Año de creación: 1887
+ -Estilo: Pintura academica con tematica clasica
+ -Epoca: Romanticismo
+ -Tematica: Escena historica
+ -Dimensiones: 122 x 184
+ -Tiempo estimado de observación: 9 minutos
+
+Cuadro-23:
+ -Titulo: La prometida vacilante
+ -Autor: Auguste Toulmouche
+ -Año de creación: 1866
+ -Estilo: Academicismo
+ -Epoca: Impresionismo
+ -Tematica: Retrato femenino
+ -Dimensiones: 65 x 54
+ -Tiempo estimado de observación: 7 minutos
+
+Cuadro-24:
+ -Titulo: El puente japones
+ -Autor: Claude Monet
+ -Año de creación: 1899
+ -Estilo: Impresionismo
+ -Epoca: Impresionismo
+ -Tematica: Paisaje rural
+ -Dimensiones: 82 x 93
+ -Tiempo estimado de observación: 10 minutos
+
+Cuadro-25:
+ -Titulo: Domingo en la Grande Jatte
+ -Autor: Georges Seurat
+ -Año de creación: 1886
+ -Estilo: Puntillismo
+ -Epoca: Posimpresionismo
+ -Tematica: Escena costumbrista
+ -Dimensiones: 207 x 308
+ -Tiempo estimado de observación: 3 minutos
+
+Cuadro-26:
+ -Titulo: Campo de trigo al atardecer
+ -Autor: Vincent van Gogh
+ -Año de creación: 1888
+ -Estilo: Posimpresionismo
+ -Epoca: Posimpresionismo
+ -Tematica: Paisaje rural
+ -Dimensiones: 73 x 92
+ -Tiempo estimado de observación: 4 minutos
+
+Cuadro-27:
+ -Titulo: Los girasoles
+ -Autor: Vincent van Gogh
+ -Año de creación: 1888
+ -Estilo: Posimpresionismo
+ -Epoca: Posimpresionismo
+ -Tematica: Naturaleza
+ -Dimensiones: 92 x 73
+ -Tiempo estimado de observación: 10 minutos
+
+Cuadro-28:
+ -Titulo: La noche estrellada
+ -Autor: Vincent van Gogh
+ -Año de creación: 1889
+ -Estilo: Posimpresionismo
+ -Epoca: Posimpresionismo
+ -Tematica: Paisaje rural
+ -Dimensiones: 73 x 92
+ -Tiempo estimado de observación: 10 minutos
+
+Cuadro-29:
+ -Titulo: Autorretrato
+ -Autor: Vincent van Gogh
+ -Año de creación: 1889
+ -Estilo: Posimpresionismo
+ -Epoca: Posimpresionismo
+ -Tematica: Retrato individual
+ -Dimensiones: 65 x 55
+ -Tiempo estimado de observación: 9 minutos
+
+Cuadro-30:
+ -Titulo: Campo de trigo con cipreses
+ -Autor: Vincent van Gogh
+ -Año de creación: 1889
+ -Estilo: Posimpresionismo
+ -Epoca: Posimpresionismo
+ -Tematica: Paisaje rural
+ -Dimensiones: 73 x 93
+ -Tiempo estimado de observación: 4 minutos
+
+Cuadro-31:
+ -Titulo: Olivos
+ -Autor: Vincent van Gogh
+ -Año de creación: 1889
+ -Estilo: Posimpresionismo
+ -Epoca: Posimpresionismo
+ -Tematica: Paisaje rural
+ -Dimensiones: 73 x 93
+ -Tiempo estimado de observación: 2 minutos
+
+Cuadro-32:
+ -Titulo: Almendro en flor
+ -Autor: Vincent van Gogh
+ -Año de creación: 1890
+ -Estilo: Posimpresionismo
+ -Epoca: Posimpresionismo
+ -Tematica: Naturaleza
+ -Dimensiones: 73 x 92
+ -Tiempo estimado de observación: 4 minutos
+
+Cuadro-33:
+ -Titulo: Descanso al mediodia
+ -Autor: Vincent van Gogh
+ -Año de creación: 1890
+ -Estilo: Posimpresionismo
+ -Epoca: Posimpresionismo
+ -Tematica: Escena costumbrista
+ -Dimensiones: 73 x 92
+ -Tiempo estimado de observación: 4 minutos
+
+Cuadro-34:
+ -Titulo: El hombre con el craneo
+ -Autor: Paul Cezanne
+ -Año de creación: 1897
+ -Estilo: Posimpresionismo
+ -Epoca: Posimpresionismo
+ -Tematica: Escena filosofica
+ -Dimensiones: 72 x 91
+ -Tiempo estimado de observación: 4 minutos
+
+CLIPS> 

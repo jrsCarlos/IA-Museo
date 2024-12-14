@@ -1,0 +1,540 @@
+-------------------------------------------------------------------------------
+                                  ¡Bienvenid@!                                 
+A continuación se le formularán una serie de preguntas sus datos y preferencias
+     artísticas para poder organizarle una visita guiada por nuestro museo     
+-------------------------------------------------------------------------------
+
+Introduzca su nombre: 
+user1
+
+Selecciona el tamaño del grupo de visitantes:
+1. Una persona
+2. Una familia
+3. Un grupo pequeño (2-5 personas)
+4. Un grupo grande (>5 personas)
+Ingresa un número del 1 al 4
+1
+¿Cuántos días durará su visita al Museo?
+Ingresa un número del 1 al 7
+3
+¿Cuántas horas, como máximo, deseas visitar el museo por día?
+Ingresa un número del 1 al 8
+4
+Por útimo, responda las siguientes preguntas:
+A) ¿Quién pintó 'La Última Cena'?
+   1. Leonardo da Vinci
+   2. Pablo Picasso
+   3. Vincent van Gogh
+   4. Claude Monet
+Ingresa un número del 1 al 4
+1
+B) ¿En qué periodo tuvo lugar el Renacimiento?
+   1. Siglo XIII
+   2. Siglo XIV al XVI
+   3. Siglo XVII
+   4. Siglo XVIII
+Ingresa un número del 1 al 4
+2
+C) ¿Qué características definen al arte barroco?
+   1. Simetría y simplicidad
+   2. Uso dramático de la luz y el movimiento
+   3. Representaciones abstractas
+   4. Colores pastel y escenas idílicas
+Ingresa un número del 1 al 4
+2
+D) ¿Qué obra pintó Vincent van Gogh?
+   1. Las Meninas
+   2. La noche estrellada
+   3. El grito
+   4. La Gioconda
+Ingresa un número del 1 al 4
+2
+E) ¿Qué pintor es famoso por sus retratos de la corte española del siglo XVII?
+   1. Diego Velázquez
+   2. Sandro Botticelli
+   3. Rafael Sanzio
+   4. Pieter Bruegel el Viejo
+Ingresa un número del 1 al 4
+1
+Gracias por responder!
+
+Selecciona tus pintores favoritos de la lista.
+   1. Aelbrecht Bouts
+   2. Alexandre Cabanel
+   3. Artemisia Gentileschi
+   4. Auguste Toulmouche
+   5. Bartolome Esteban Murillo
+   6. Caravaggio
+   7. Claude Lorrain
+   8. Claude Monet
+   9. Diego Velazquez
+   10. Edmund Blair Leighton
+   11. El Greco
+   12. Elisabeth Vigee-LeBrun
+   13. Francesco Hayez
+   14. Francisco de Goya
+   15. Frank Cadogan Cowper
+   16. Frank Dicksee
+   17. Frederic Leighton
+   18. Georges Seurat
+   19. Giovanni Antonio Canal (Canaletto)
+   20. Guido Reni
+   21. Henry Fuseli
+   22. Hieronymus Bosch (El Bosco)
+   23. Hugo van der Goes
+   24. Hyacinthe Rigaud
+   25. Jacob Jordaens
+   26. Jacques-Louis David
+   27. Jan Matejko
+   28. Jan van Eyck
+   29. Jean-Auguste-Dominique Ingres
+   30. Jean-Honore Fragonard
+   31. Johannes Vermeer
+   32. John Everett Millais
+   33. Lawrence Alma-Tadema
+   34. Leonardo da Vinci
+   35. Louis-Michel Van Loo
+   36. Mariano Fortuny
+   37. Marten Eskil Winge
+   38. Miguel Angel Buonarroti
+   39. Nicolas Poussin
+   40. Paul Cezanne
+   41. Paul Delaroche
+   42. Peter Paul Rubens
+   43. Piero della Francesca
+   44. Pierre Auguste Cot
+   45. Pierre Subleyras
+   46. Pieter Bruegel el Viejo
+   47. Rafael Sanzio
+   48. Rembrandt van Rijn
+   49. Sandro Botticelli
+   50. Theodore Gericault
+   51. Thomas Gainsborough
+   52. Tiziano Vecellio
+   53. Vincent van Gogh
+   54. William Hogarth
+   55. William-Adolphe Bouguereau
+Introduce los números de tus pintores preferidos, separados por espacios
+1 10 20 30 40
+Selecciona tus temáticas favoritas de la lista.
+   1. Retrato masculino
+   2. Retrato doble
+   3. Escena religiosa
+   4. Escena mitologica
+   5. Escena alegorica
+   6. Escena biblica
+   7. Retrato femenino
+   8. Escena historica
+   9. Escena musical
+   10. Paisaje rural
+   11. Retrato grupal
+   12. Escena filosofica
+   13. Escena de genero
+   14. Retrato real
+   15. Paisaje urbano
+   16. Escena galante
+   17. Escena intima
+   18. Escena dramatica
+   19. Retrato individual
+   20. Escena literaria
+   21. Escena romantica
+   22. Escena costumbrista
+   23. Retrato familiar
+   24. Naturaleza
+Introduce los números de tus temáticas preferidas, separados por espacios
+2 11 22 24
+Selecciona tus estilos favoritos de la lista
+   1. Primitivismo flamenco
+   2. Renacimiento
+   3. Cinquecento
+   4. Escuela Veneciana
+   5. Barroco
+   6. Tenebrismo, Barroco
+   7. Manierismo
+   8. Clasicismo frances
+   9. Vedutismo, Rococo
+   10. Vedutismo
+   11. Rococo
+   12. Neoclasicismo frances
+   13. Romanticismo
+   14. Neoclasicismo
+   15. Romanticismo, Pintura oscura
+   16. Neoclasico
+   17. Pinturas negras
+   18. Pinturas Negras, Romanticismo
+   19. Academico, con influencias romanticas
+   20. Academicismo frances
+   21. Prerrafaelismo
+   22. Pre-Rafaelismo
+   23. Academicismo
+   24. Orientalismo y costumbrismo
+   25. Impresionismo
+   26. Prerrafaelismo y academicismo
+   27. Puntillismo
+   28. Pintura academica con tematica clasica
+   29. Posimpresionismo
+   30. Academico
+   31. Realismo academico
+   32. Pre-Rafaelista/Simbolista
+Introduce los números de tus estilos preferidos, separados por espacios
+4 7 15 28
+Selecciona tus épocas favoritas de la lista.
+   1. Renacimiento
+   2. Barroco
+   3. Rococo
+   4. Neoclasicismo
+   5. Romanticismo
+   6. Victoriana
+   7. Impresionismo
+   8. Posimpresionismo
+Introduce los números de tus épocas preferidas, separados por espacios
+3 6 8
+=============================================================================
+                             DATOS DEL VISITANTE                             
+=============================================================================
+
+Nombre: user1
+Tipo de visitante: Persona
+Preferencias: ("Aelbrecht Bouts" "Edmund Blair Leighton" "Guido Reni" "Jean-Honore Fragonard" "Paul Cezanne" "Retrato doble" "Retrato grupal" "Escena costumbrista" "Naturaleza" "Escuela Veneciana" "Manierismo" "Romanticismo, Pintura oscura" "Pintura academica con tematica clasica" "Rococo" "Victoriana" "Posimpresionismo")
+
+=============================================================================
+                          ITINERARIO PERSONALIZADO                           
+=============================================================================
+
+Días de visita: 3
+
+
+____________________________________DIA-1____________________________________
+
+Salas a visitar: ("Sala 1: Renacimiento" "Sala 2: Barroco" "Sala 3: Rococo")
+Tiempo estimado de la visita: 233 minutos
+
+                      ========== CUADROS A VISITAR ==========                     
+
+Cuadro-1:
+ -Titulo: El matrimonio Arnolfini
+ -Autor: Jan van Eyck
+ -Año de creación: 1434
+ -Estilo: Primitivismo flamenco
+ -Epoca: Renacimiento
+ -Tematica: Retrato doble
+ -Dimensiones: 82 x 60
+ -Tiempo estimado de observación: 14 minutos
+
+Cuadro-2:
+ -Titulo: Sagrado Semblante
+ -Autor: Aelbrecht Bouts
+ -Año de creación: 1500
+ -Estilo: Renacimiento
+ -Epoca: Renacimiento
+ -Tematica: Escena religiosa
+ -Dimensiones: 37 x 28
+ -Tiempo estimado de observación: 6 minutos
+
+Cuadro-3:
+ -Titulo: La Asuncion de la Virgen
+ -Autor: Tiziano Vecellio
+ -Año de creación: 1517
+ -Estilo: Escuela Veneciana
+ -Epoca: Renacimiento
+ -Tematica: Escena religiosa
+ -Dimensiones: 690 x 360
+ -Tiempo estimado de observación: 10 minutos
+
+Cuadro-4:
+ -Titulo: Cristo cargando la cruz
+ -Autor: El Greco
+ -Año de creación: 1603
+ -Estilo: Manierismo
+ -Epoca: Renacimiento
+ -Tematica: Escena biblica
+ -Dimensiones: 108 x 78
+ -Tiempo estimado de observación: 30 minutos
+
+Cuadro-5:
+ -Titulo: San Miguel
+ -Autor: Guido Reni
+ -Año de creación: 1636
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Escena religiosa
+ -Dimensiones: 293 x 202
+ -Tiempo estimado de observación: 27 minutos
+
+Cuadro-6:
+ -Titulo: La ronda de noche
+ -Autor: Rembrandt van Rijn
+ -Año de creación: 1642
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Retrato grupal
+ -Dimensiones: 379 x 453
+ -Tiempo estimado de observación: 30 minutos
+
+Cuadro-7:
+ -Titulo: Las meninas
+ -Autor: Diego Velazquez
+ -Año de creación: 1656
+ -Estilo: Barroco
+ -Epoca: Barroco
+ -Tematica: Retrato grupal
+ -Dimensiones: 318 x 276
+ -Tiempo estimado de observación: 47 minutos
+
+Cuadro-8:
+ -Titulo: El Bucintoro
+ -Autor: Giovanni Antonio Canal (Canaletto)
+ -Año de creación: 1729
+ -Estilo: Vedutismo, Rococo
+ -Epoca: Rococo
+ -Tematica: Paisaje urbano
+ -Dimensiones: 99 x 146
+ -Tiempo estimado de observación: 24 minutos
+
+Cuadro-9:
+ -Titulo: Entrada al Gran Canal
+ -Autor: Giovanni Antonio Canal (Canaletto)
+ -Año de creación: 1730
+ -Estilo: Vedutismo, Rococo
+ -Epoca: Rococo
+ -Tematica: Paisaje urbano
+ -Dimensiones: 50 x 73
+ -Tiempo estimado de observación: 21 minutos
+
+Cuadro-10:
+ -Titulo: Caronte atravesando las sombras de la laguna Estigia
+ -Autor: Pierre Subleyras
+ -Año de creación: 1740
+ -Estilo: Vedutismo
+ -Epoca: Rococo
+ -Tematica: Escena mitologica
+ -Dimensiones: 135 x 83
+ -Tiempo estimado de observación: 23 minutos
+
+
+____________________________________DIA-2____________________________________
+
+Salas a visitar: ("Sala 3: Rococo" "Sala 5: Romanticismo" "Sala 7: Posimpresionismo")
+Tiempo estimado de la visita: 209 minutos
+
+                      ========== CUADROS A VISITAR ==========                     
+
+Cuadro-1:
+ -Titulo: La familia de Felipe V
+ -Autor: Louis-Michel Van Loo
+ -Año de creación: 1743
+ -Estilo: Rococo
+ -Epoca: Rococo
+ -Tematica: Retrato real
+ -Dimensiones: 408 x 520
+ -Tiempo estimado de observación: 31 minutos
+
+Cuadro-2:
+ -Titulo: El senor y la senora Andrews
+ -Autor: Thomas Gainsborough
+ -Año de creación: 1750
+ -Estilo: Rococo
+ -Epoca: Rococo
+ -Tematica: Retrato doble
+ -Dimensiones: 69 x 119
+ -Tiempo estimado de observación: 23 minutos
+
+Cuadro-3:
+ -Titulo: Los sirvientes del pintor
+ -Autor: William Hogarth
+ -Año de creación: 1755
+ -Estilo: Rococo
+ -Epoca: Rococo
+ -Tematica: Retrato grupal
+ -Dimensiones: 63 x 75
+ -Tiempo estimado de observación: 21 minutos
+
+Cuadro-4:
+ -Titulo: El columpio
+ -Autor: Jean-Honore Fragonard
+ -Año de creación: 1767
+ -Estilo: Rococo
+ -Epoca: Rococo
+ -Tematica: Escena galante
+ -Dimensiones: 81 x 64
+ -Tiempo estimado de observación: 21 minutos
+
+Cuadro-5:
+ -Titulo: La cerradura
+ -Autor: Jean-Honore Fragonard
+ -Año de creación: 1768
+ -Estilo: Rococo
+ -Epoca: Rococo
+ -Tematica: Escena intima
+ -Dimensiones: 73 x 93
+ -Tiempo estimado de observación: 22 minutos
+
+Cuadro-6:
+ -Titulo: El aquelarre
+ -Autor: Francisco de Goya
+ -Año de creación: 1789
+ -Estilo: Romanticismo, Pintura oscura
+ -Epoca: Romanticismo
+ -Tematica: Escena mitologica
+ -Dimensiones: 43 x 30
+ -Tiempo estimado de observación: 12 minutos
+
+Cuadro-7:
+ -Titulo: La Vicaria
+ -Autor: Mariano Fortuny
+ -Año de creación: 1870
+ -Estilo: Orientalismo y costumbrismo
+ -Epoca: Romanticismo
+ -Tematica: Escena costumbrista
+ -Dimensiones: 60 x 93
+ -Tiempo estimado de observación: 22 minutos
+
+Cuadro-8:
+ -Titulo: Las mujeres de Amfissa
+ -Autor: Lawrence Alma-Tadema
+ -Año de creación: 1887
+ -Estilo: Pintura academica con tematica clasica
+ -Epoca: Romanticismo
+ -Tematica: Escena historica
+ -Dimensiones: 122 x 184
+ -Tiempo estimado de observación: 33 minutos
+
+Cuadro-9:
+ -Titulo: Domingo en la Grande Jatte
+ -Autor: Georges Seurat
+ -Año de creación: 1886
+ -Estilo: Puntillismo
+ -Epoca: Posimpresionismo
+ -Tematica: Escena costumbrista
+ -Dimensiones: 207 x 308
+ -Tiempo estimado de observación: 9 minutos
+
+Cuadro-10:
+ -Titulo: Campo de trigo al atardecer
+ -Autor: Vincent van Gogh
+ -Año de creación: 1888
+ -Estilo: Posimpresionismo
+ -Epoca: Posimpresionismo
+ -Tematica: Paisaje rural
+ -Dimensiones: 73 x 92
+ -Tiempo estimado de observación: 15 minutos
+
+
+____________________________________DIA-3____________________________________
+
+Salas a visitar: ("Sala 7: Posimpresionismo" "Sala 8: Victoriana")
+Tiempo estimado de la visita: 228 minutos
+
+                      ========== CUADROS A VISITAR ==========                     
+
+Cuadro-1:
+ -Titulo: Los girasoles
+ -Autor: Vincent van Gogh
+ -Año de creación: 1888
+ -Estilo: Posimpresionismo
+ -Epoca: Posimpresionismo
+ -Tematica: Naturaleza
+ -Dimensiones: 92 x 73
+ -Tiempo estimado de observación: 37 minutos
+
+Cuadro-2:
+ -Titulo: La noche estrellada
+ -Autor: Vincent van Gogh
+ -Año de creación: 1889
+ -Estilo: Posimpresionismo
+ -Epoca: Posimpresionismo
+ -Tematica: Paisaje rural
+ -Dimensiones: 73 x 92
+ -Tiempo estimado de observación: 37 minutos
+
+Cuadro-3:
+ -Titulo: Autorretrato
+ -Autor: Vincent van Gogh
+ -Año de creación: 1889
+ -Estilo: Posimpresionismo
+ -Epoca: Posimpresionismo
+ -Tematica: Retrato individual
+ -Dimensiones: 65 x 55
+ -Tiempo estimado de observación: 34 minutos
+
+Cuadro-4:
+ -Titulo: Campo de trigo con cipreses
+ -Autor: Vincent van Gogh
+ -Año de creación: 1889
+ -Estilo: Posimpresionismo
+ -Epoca: Posimpresionismo
+ -Tematica: Paisaje rural
+ -Dimensiones: 73 x 93
+ -Tiempo estimado de observación: 15 minutos
+
+Cuadro-5:
+ -Titulo: Olivos
+ -Autor: Vincent van Gogh
+ -Año de creación: 1889
+ -Estilo: Posimpresionismo
+ -Epoca: Posimpresionismo
+ -Tematica: Paisaje rural
+ -Dimensiones: 73 x 93
+ -Tiempo estimado de observación: 7 minutos
+
+Cuadro-6:
+ -Titulo: Almendro en flor
+ -Autor: Vincent van Gogh
+ -Año de creación: 1890
+ -Estilo: Posimpresionismo
+ -Epoca: Posimpresionismo
+ -Tematica: Naturaleza
+ -Dimensiones: 73 x 92
+ -Tiempo estimado de observación: 15 minutos
+
+Cuadro-7:
+ -Titulo: Descanso al mediodia
+ -Autor: Vincent van Gogh
+ -Año de creación: 1890
+ -Estilo: Posimpresionismo
+ -Epoca: Posimpresionismo
+ -Tematica: Escena costumbrista
+ -Dimensiones: 73 x 92
+ -Tiempo estimado de observación: 15 minutos
+
+Cuadro-8:
+ -Titulo: El hombre con el craneo
+ -Autor: Paul Cezanne
+ -Año de creación: 1897
+ -Estilo: Posimpresionismo
+ -Epoca: Posimpresionismo
+ -Tematica: Escena filosofica
+ -Dimensiones: 72 x 91
+ -Tiempo estimado de observación: 15 minutos
+
+Cuadro-9:
+ -Titulo: Ofelia
+ -Autor: John Everett Millais
+ -Año de creación: 1852
+ -Estilo: Prerrafaelismo
+ -Epoca: Victoriana
+ -Tematica: Escena literaria
+ -Dimensiones: 76 x 111
+ -Tiempo estimado de observación: 15 minutos
+
+Cuadro-10:
+ -Titulo: La chica ciega
+ -Autor: John Everett Millais
+ -Año de creación: 1856
+ -Estilo: Pre-Rafaelismo
+ -Epoca: Victoriana
+ -Tematica: Escena dramatica
+ -Dimensiones: 81 x 61
+ -Tiempo estimado de observación: 7 minutos
+
+Cuadro-11:
+ -Titulo: Sol ardiente de junio
+ -Autor: Frederic Leighton
+ -Año de creación: 1895
+ -Estilo: Academico
+ -Epoca: Victoriana
+ -Tematica: Escena intima
+ -Dimensiones: 120 x 120
+ -Tiempo estimado de observación: 32 minutos
+
+CLIPS> 

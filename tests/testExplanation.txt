@@ -1,0 +1,13 @@
+user1 #nombre
+1 # tamaño (< 5)
+3 # dias (< 8)
+4 # horas (< 9)
+1 #conocimiento1 (< 5)
+2 #conocimiento2 (< 5)
+2 #conocimiento3 (< 5)
+2 #conocimiento4 (< 5)
+1 #conocimiento5 (< 5)
+1 10 20 30 40 #preferenciasPintor (< 56)
+2 11 22 24 #preferenciasTematica (< 24)
+4 7 15 28 #preferenciasEstilo (< 33)
+3 6 8 #preferencias de Epoca (< 9)
