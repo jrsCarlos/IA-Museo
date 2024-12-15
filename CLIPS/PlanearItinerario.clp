@@ -101,7 +101,7 @@
 
         (bind ?id-observacion (gensym))
         (make-instance ?id-observacion of Observacion
-            (Cuadro ?cuadro)
+            (Observacion_de ?cuadro)
             (Tiempo ?tiempo)
         )
     )
@@ -129,7 +129,7 @@
             (bind ?tiempo-ocupado (+ ?tiempo-ocupado ?tiempo))
 
             ; Guardamos la sala visitada (solo si no la hemos visitado ya)
-            (bind ?cuadro (send ?observacion get-Cuadro))
+            (bind ?cuadro (send ?observacion get-Observacion_de))
             (bind ?sala (send (send ?cuadro get-Ubicado_en) get-Nombre))
             (if (not (member$ ?sala ?salas-visitadas)) then
                 (bind ?salas-visitadas (create$ ?salas-visitadas ?sala))

@@ -140,7 +140,7 @@
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
-    (slot Cuadro                ;Relacion con Cuadro
+    (slot Observacion_de                ;Relacion con Cuadro
         (type INSTANCE)
         (create-accessor read-write))
     (slot Tiempo
