@@ -96,7 +96,7 @@
         (bind ?idx-cuadro 1)
 
         (foreach ?obs ?observaciones
-            (bind ?cuadro (send ?obs get-Cuadro))
+            (bind ?cuadro (send ?obs get-Observacion_de))
             (bind ?tiempo (send ?obs get-Tiempo))
 
             (printout t "Cuadro-" ?idx-cuadro ":" crlf)
