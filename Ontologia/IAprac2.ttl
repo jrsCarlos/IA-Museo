@@ -85,12 +85,6 @@
                                             rdfs:label "Ubicado_en"@es .
 
 
-###  http://www.w3.org/2002/07/owl#topObjectProperty
-owl:topObjectProperty rdfs:subPropertyOf owl:topObjectProperty ;
-                      rdfs:domain <http://webprotege.stanford.edu/Visitante> ;
-                      rdfs:range <http://webprotege.stanford.edu/Itinerario> .
-
-
 #################################################################
 #    Data properties
 #################################################################
