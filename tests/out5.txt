@@ -251,7 +251,7 @@ Introduce los números de tus épocas preferidas, separados por espacios
 =============================================================================
 
 Nombre: Familia_Inculta
-Tipo de visitante: Persona
+Tipo de visitante: Familia
 Preferencias: ("Auguste Toulmouche" "Hugo van der Goes" "Jacob Jordaens" "Paul Delaroche" "Escena biblica" "Escena musical" "Paisaje rural" "Escena romantica" "Primitivismo flamenco" "Academico, con influencias romanticas" "Pintura academica con tematica clasica" "Posimpresionismo" "Renacimiento" "Barroco" "Neoclasicismo" "Posimpresionismo")
 
 =============================================================================
